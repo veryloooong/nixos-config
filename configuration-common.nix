@@ -83,6 +83,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     git
+    gh
     wget
     curl
   ];
@@ -92,6 +93,12 @@
     enable = true;
     defaultEditor = true;
   };
+
+  # Enable nix-ld to run all binaries.
+  programs.nix-ld.enable = true;
+
+  # Enable flatpaks.
+  services.flatpak.enable = true;
 
   environment.variables = {
     EDITOR = "nvim";
