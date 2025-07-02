@@ -11,6 +11,7 @@
       system = "x86_64-linux";
       modules = [
         ./configuration-vm.nix
+	./configuration-common.nix
         determinate.nixosModules.default
       ];
     };
@@ -19,6 +20,7 @@
       system = "x86_64-linux";
       modules = [
         ./configuration-laptop.nix
+	./configuration-common.nix
         determinate.nixosModules.default
       ];
     };
