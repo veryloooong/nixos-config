@@ -28,6 +28,14 @@
     LC_TIME = "en_GB.UTF-8";
   };
 
+  # Enable fcitx5 to type Vietnamese and Mandarin.
+  i18n.inputMethod = {
+    enable = true;
+    type = "fcitx5";
+    fcitx5.addons = with pkgs; [ fcitx5-rime kdePackages.fcitx5-unikey ];
+    fcitx5.waylandFrontend = true;
+  };
+
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
