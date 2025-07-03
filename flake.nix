@@ -16,6 +16,7 @@
     system = "x86_64-linux";
     common-modules = [
       ./configuration-common.nix
+      nix-flatpak.nixosModules.nix-flatpak
       determinate.nixosModules.default
     ];
   in {
