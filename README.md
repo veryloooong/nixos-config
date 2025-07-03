@@ -1,8 +1,7 @@
-# My own NixOS config
+# All of my configs
 
-One Git repo for NixOS configs for both my VMs and my laptop but I will install NixOS on laptop later when I'm used to it
+## What's inside
 
-## Todos
-
-- Setup for laptop
-- `home-manager` and user settings
+- My own NixOS configuration
+- My PowerShell config (todo)
+- My Helix config (todo)
