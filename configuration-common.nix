@@ -100,6 +100,18 @@
   # Enable flatpaks.
   services.flatpak.enable = true;
 
+  # Enable portal
+  xdg.portal = {
+    enable = true;
+    config = {
+      common = {
+        default = [
+          "kde"
+        ];
+      };
+    };
+  };
+
   environment.variables = {
     EDITOR = "nvim";
   };
@@ -118,7 +130,7 @@
   services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 22 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
