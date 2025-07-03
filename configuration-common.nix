@@ -33,7 +33,6 @@
   };
 
   # Enable the X11 windowing system.
-  # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
@@ -86,6 +85,8 @@
     gh
     wget
     curl
+    ripgrep
+    wl-clipboard
   ];
 
   # Make Neovim the default editor.
@@ -100,7 +101,7 @@
   # Enable flatpaks.
   services.flatpak.enable = true;
 
-  # Enable portal
+  # Enable portal.
   xdg.portal = {
     enable = true;
     config = {

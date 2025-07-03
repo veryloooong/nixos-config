@@ -26,9 +26,6 @@
   services.xserver.videoDrivers = [ "vmware" ];
   virtualisation.vmware.guest.enable = true;
 
-  # Install firefox.
-  programs.firefox.enable = true;
-
   environment.systemPackages = with pkgs; [
   ];
 

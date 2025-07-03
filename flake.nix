@@ -11,13 +11,15 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak";
   };
 
-  outputs = { self, nixpkgs, determinate, ... }:
+  outputs = inputs@{ self, nixpkgs, determinate, nix-flatpak, home-manager, ... }:
   let 
     system = "x86_64-linux";
     common-modules = [
       ./configuration-common.nix
-      nix-flatpak.nixosModules.nix-flatpak
       determinate.nixosModules.default
+      # flatpaks
+      nix-flatpak.nixosModules.nix-flatpak
+      ./modules/flatpak.nix
     ];
   in {
     nixosConfigurations.nixos-vm = nixpkgs.lib.nixosSystem {
