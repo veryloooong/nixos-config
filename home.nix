@@ -8,18 +8,22 @@
 
   home.packages = with pkgs; [
     # development
-    gh
     fzf
     zoxide
   ];
 
   # === DEVELOPMENT ===
 
-  # Git
+  # Git and GitHub
   programs.git = {
     enable = true;
     userEmail = "hailong2004ptcnn@gmail.com";
     userName = "Hải Long";
+  };
+
+  programs.gh = {
+    enable = true;
+    gitCredentialHelper.enable = true;
   };
 
   # VSCode
