@@ -16,10 +16,20 @@
     system = "x86_64-linux";
     common-modules = [
       ./configuration-common.nix
+
+      # Determinate has garbage collection + Flakehub search
       determinate.nixosModules.default
+
       # flatpaks
       nix-flatpak.nixosModules.nix-flatpak
       ./modules/flatpak.nix
+
+      # home manager
+      home-manager.nixosModules.home-manager {
+        home-manager.useGlobalPkgs = true;
+	home-manager.useUserPackages = true;
+	home-manager.users.veryloooong = ../home.nix;
+      }
     ];
   in {
     nixosConfigurations.nixos-vm = nixpkgs.lib.nixosSystem {

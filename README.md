@@ -3,8 +3,9 @@
 ## What's inside
 
 - My own NixOS configuration
-- My PowerShell config (todo)
-- My Helix config (todo)
+- Configured with Home Manager (todo)
+  - My PowerShell config (todo)
+  - My Helix config (todo)
 
 ## Setup
 
@@ -17,3 +18,7 @@
 
   - Fcitx5 for Unikey / Rime
   - Proton / Steam / Lutris / Heroic
+
+## Todos
+
+- Configure SoftMaker Office 2021
