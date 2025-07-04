@@ -96,6 +96,8 @@
   programs.neovim = {
     enable = true;
     defaultEditor = true;
+    viAlias = true;
+    vimAlias = true;
   };
 
   # Enable nix-ld to run all binaries
