@@ -28,7 +28,7 @@
       home-manager.nixosModules.home-manager {
         home-manager.useGlobalPkgs = true;
 	home-manager.useUserPackages = true;
-	home-manager.users.veryloooong = ./home.nix;
+	home-manager.users.veryloooong = import ./home.nix;
       }
     ];
   in {

@@ -1,26 +1,42 @@
 { config, pkgs, ... }:
 
 {
-  # Home Manager needs a bit of information about you and the
-  # paths it should manage.
+  programs.home-manager.enable = true;
+  
   home.username = "veryloooong";
   home.homeDirectory = "/home/veryloooong";
 
-  home.packages = [
-    pkgs.evil-helix
+  home.packages = with pkgs; [
+    gh
   ];
 
-  # This value determines the Home Manager release that your
-  # configuration is compatible with. This helps avoid breakage
-  # when a new Home Manager release introduces backwards
-  # incompatible changes.
-  #
-  # You can update Home Manager without changing this value. See
-  # the Home Manager release notes for a list of state version
-  # changes in each release.
-  home.stateVersion = "25.11";
+  # === DEVELOPMENT ===
 
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
+  # Git
+  programs.git = {
+    enable = true;
+    userEmail = "hailong2004ptcnn@gmail.com";
+    userName = "Hải Long";
+  };
+
+  # VSCode
+  programs.vscode = {
+    enable = true;
+    package = pkgs.vscode.fhs;
+  };
+
+  # Shell aliases
+  home.shellAliases = {
+    ls = "ls -l"
+  };
+
+  # Shell config
+  home.file = {
+    ".config/powershell/Microsoft.PowerShell_profile.ps1" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/powershell/profile.ps1"
+    };
+  };
+
+  home.stateVersion = "25.11";
 }
 
