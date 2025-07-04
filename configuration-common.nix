@@ -86,6 +86,10 @@
 
     # development
     git
+
+    # fonts
+    cascadia-code
+    inter
   ];
 
   # Make Neovim the default editor even though I use VSCode because VIM is some unc type shi

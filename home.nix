@@ -40,7 +40,7 @@
     ".config/powershell/Microsoft.PowerShell_profile.ps1" = {
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/powershell/profile.ps1";
     };
-    "./config/omp.toml" = {
+    ".config/omp.toml" = {
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/powershell/omp.toml";
     };
   };
