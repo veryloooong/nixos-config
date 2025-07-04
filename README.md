@@ -1,24 +1,8 @@
-# All of my configs
+# My own NixOS config
 
-## What's inside
-
-- My own NixOS configuration
-- Configured with Home Manager (todo)
-  - My PowerShell config (todo)
-  - My Helix config (todo)
-
-## Setup
-
-- TODO: make a simple `Makefile` or some other setup in order to
-
-  - Symlink `./nixos` to `/etc/nixos`
-  - Setup `.config` folder
-
-- After that need to config more stuff (TODO make these guys declarative too?)
-
-  - Fcitx5 for Unikey / Rime
-  - Proton / Steam / Lutris / Heroic
+One Git repo for NixOS configs for both my VMs and my laptop but I will install NixOS on laptop later when I'm used to it
 
 ## Todos
 
-- Configure SoftMaker Office 2021
+- Setup for laptop
+- `home-manager` and user settings
