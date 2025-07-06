@@ -86,8 +86,10 @@
 
     # development
     git
+  ];
 
-    # fonts
+  # fonts
+  fonts.packages = with pkgs; [
     cascadia-code
     inter
   ];

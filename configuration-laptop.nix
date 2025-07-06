@@ -9,9 +9,8 @@
     ];
 
   # Bootloader // TODO be repopulated later
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "";
-  boot.loader.grub.useOSProber = true;
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "lebobo"; # Define your hostname.
 
