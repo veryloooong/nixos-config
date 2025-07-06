@@ -68,8 +68,7 @@
     isNormalUser = true;
     description = "Hải Long";
     extraGroups = [ "wheel" ]; # sudo access
-    #shell = pkgs.powershell; # don't judge :(
-    shell = pkgs.zsh; # return
+    shell = pkgs.zsh;
     useDefaultShell = true;
   };
 
@@ -102,6 +101,9 @@
     noto-fonts-emoji
     noto-fonts-cjk-sans
   ];
+
+  # shell
+  programs.zsh.enable = true;
 
   # bindfs for theming
   system.fsPackages = [ pkgs.bindfs ];

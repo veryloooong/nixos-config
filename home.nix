@@ -43,6 +43,11 @@
 
   # === CUSTOMISATION ===
 
+  # zsh config
+  programs.zsh = {
+    enable = true;
+  };
+
   # oh-my-posh config
   programs.oh-my-posh = {
     enable = true;
