@@ -63,6 +63,10 @@
   # Enable touchpad support (enabled default in most desktopManager)
   services.libinput.enable = true;
 
+  # shell
+  programs.zsh.enable = true;
+  environment.pathsToLink = [ "/share/zsh" ];
+
   # Define a user account. Don't forget to set a password with ‘passwd’
   users.users.veryloooong = {
     isNormalUser = true;
@@ -101,9 +105,6 @@
     noto-fonts-emoji
     noto-fonts-cjk-sans
   ];
-
-  # shell
-  programs.zsh.enable = true;
 
   # bindfs for theming
   system.fsPackages = [ pkgs.bindfs ];
