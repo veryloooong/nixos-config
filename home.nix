@@ -32,6 +32,15 @@
     package = pkgs.vscode.fhs;
   };
 
+  # === GAMING ===
+  programs.lutris = {
+    enable = true;
+    extraPackages = with pkgs; [
+      gamescope
+      gamemode
+    ];
+  };
+
   # === CUSTOMISATION ===
 
   # oh-my-posh config
@@ -39,6 +48,7 @@
     enable = true;
   };
 
+  # Configuration symlinks (very impure !!!)
   home.file = {
     # PowerShell config
     ".config/powershell/Microsoft.PowerShell_profile.ps1" = {
