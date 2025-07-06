@@ -87,6 +87,9 @@
 
     # development
     git
+
+    # productivity
+    brave
   ];
 
   # fonts
