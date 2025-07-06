@@ -24,7 +24,6 @@
     userEmail = "hailong2004ptcnn@gmail.com";
     userName = "Hải Long";
   };
-
   programs.gh = {
     enable = true;
     gitCredentialHelper.enable = true;
@@ -43,6 +42,16 @@
       gamescope
       gamemode
     ];
+  };
+
+  # === CUSTOMISATION ===
+  # eza = ls replacement
+  programs.eza = {
+    enable = true;
+    colors = "always";
+    icons = "auto";
+    git = true;
+    enableZshIntegration = true;
   };
 
   # do not touch
