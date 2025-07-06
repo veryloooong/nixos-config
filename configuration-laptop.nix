@@ -1,5 +1,3 @@
-# TODO: repopulate this file when installed on laptop
-
 { config, pkgs, ... }:
 
 {
@@ -8,9 +6,10 @@
       ./hardware-configuration-laptop.nix
     ];
 
-  # Bootloader // TODO be repopulated later
+  # Bootloader and boot screen
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.plymouth.enable = true;
 
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
