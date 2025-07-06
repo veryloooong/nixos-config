@@ -68,7 +68,8 @@
     isNormalUser = true;
     description = "Hải Long";
     extraGroups = [ "wheel" ]; # sudo access
-    shell = pkgs.powershell; # don't judge :(
+    #shell = pkgs.powershell; # don't judge :(
+    shell = pkgs.zsh; # return
     useDefaultShell = true;
   };
 
