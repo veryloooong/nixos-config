@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ./modules/zsh.nix
+  ];
+
   programs.home-manager.enable = true;
   
   home.username = "veryloooong";
@@ -41,31 +45,7 @@
     ];
   };
 
-  # === CUSTOMISATION ===
-
-  # zsh config
-  programs.zsh = {
-    enable = true;
-  };
-
-  # oh-my-posh config
-  programs.oh-my-posh = {
-    enable = true;
-    enableZshIntegration = true;
-    settings = builtins.fromTOML (builtins.unsafeDiscardStringContext (builtins.readFile ./powershell/omp.toml));
-  };
-
-  # Configuration symlinks (very impure !!!)
-  home.file = {
-    # PowerShell config
-    ".config/powershell/Microsoft.PowerShell_profile.ps1" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/powershell/profile.ps1";
-    };
-    ".config/omp.toml" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/powershell/omp.toml";
-    };
-  };
-
+  # do not touch
   home.stateVersion = "25.11";
 }
 
