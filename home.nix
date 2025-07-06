@@ -51,6 +51,8 @@
   # oh-my-posh config
   programs.oh-my-posh = {
     enable = true;
+    enableZshIntegration = true;
+    settings = builtins.fromTOML (builtins.unsafeDiscardStringContext (builtins.readFile ./powershell/omp.toml));
   };
 
   # Configuration symlinks (very impure !!!)
