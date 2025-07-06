@@ -90,12 +90,13 @@
   ];
 
   # fonts
+  fonts.fontDir.enable = true;
   fonts.packages = with pkgs; [
     cascadia-code
     inter
     noto-fonts
     noto-fonts-emoji
-    noto-fonts-cjk
+    noto-fonts-cjk-sans
   ];
 
   # bindfs for theming
