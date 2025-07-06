@@ -83,6 +83,7 @@
     curl
     ripgrep
     wl-clipboard
+    xsettingsd
 
     # development
     git
@@ -92,7 +93,31 @@
   fonts.packages = with pkgs; [
     cascadia-code
     inter
+    noto-fonts
+    noto-fonts-emoji
+    noto-fonts-cjk
   ];
+
+  # bindfs for theming
+  system.fsPackages = [ pkgs.bindfs ];
+
+  fileSystems = let
+    mkRoSymBind = path: {
+      device = path;
+      fsType = "fuse.bindfs";
+      options = [ "ro" "resolve-symlinks" "x-gvfs-hide" ];
+    };
+    aggregated = pkgs.buildEnv {
+        name = "system-fonts-and-icons";
+        paths = config.fonts.packages ++ (with pkgs; [
+          bibata-cursors
+        ]);
+        pathsToLink = [ "/share/fonts" "/share/icons" ];
+    };
+  in {
+    "/usr/share/fonts" = mkRoSymBind "${aggregated}/share/fonts";
+    "/usr/share/icons" = mkRoSymBind "${aggregated}/share/icons";
+  };
 
   # Make Neovim the default editor even though I use VSCode because VIM is some unc type shi
   programs.neovim = {
