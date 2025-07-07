@@ -28,6 +28,9 @@
       ];
     })
   ];
+
+  # KDE Connect
+  programs.kdeconnect.enable = true;
 	
   # Battery and power management
   services.power-profiles-daemon.enable = false;
