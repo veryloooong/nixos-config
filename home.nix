@@ -104,7 +104,6 @@
   # zellij = tmux but noob
   programs.zellij = {
     enable = true;
-    enableZshIntegration = true;
     settings = {
       theme = "one-half-dark";
       default_mode = "locked";
