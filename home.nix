@@ -12,7 +12,6 @@
 
   home.packages = with pkgs; [
     # shell
-    fzf
     hexyl
   ];
 
@@ -67,6 +66,12 @@
   programs.zoxide = {
     enable = true;
     options = [ "--cmd" "cd" ];
+  };
+
+  # fzf = fuzzy finder
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
   };
 
   # do not touch

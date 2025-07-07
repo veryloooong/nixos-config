@@ -1,4 +1,4 @@
-{ lib, ...}:
+{ lib, pkgs, ... }:
 
 {
   programs.zsh = {
@@ -15,8 +15,8 @@
     # aliases
     shellAliases = {
       ls = "eza";
-      system-update = "sudo nixos-rebuild switch";
       cat = "bat";
+      system-update = "sudo nixos-rebuild switch";
     };
 
     # history
@@ -28,6 +28,24 @@
       ignoreSpace = true;
       ignoreAllDups = true;
     };
+
+    # fzf-tab plugin
+    plugins = [
+      {
+        name = "fzf-tab";
+	src = pkgs.fetchFromGitHub {
+	  owner = "Aloxaf";
+	  repo = "fzf-tab";
+	  rev = "v1.2.0";
+	  sha256 = "q26XVS/LcyZPRqDNwKKA9exgBByE0muyuNb0Bbar2lY=";
+	};
+      }
+    ];
+
+    initContent = ''
+      zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+      zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"
+    '';
   };
 
   programs.oh-my-posh = {
