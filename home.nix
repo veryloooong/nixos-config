@@ -11,7 +11,7 @@
   home.homeDirectory = "/home/veryloooong";
 
   home.packages = with pkgs; [
-    # development
+    # shell
     fzf
     zoxide
   ];
@@ -45,6 +45,7 @@
   };
 
   # === CUSTOMISATION ===
+
   # eza = ls replacement
   programs.eza = {
     enable = true;
@@ -52,6 +53,14 @@
     icons = "auto";
     git = true;
     enableZshIntegration = true;
+  };
+
+  # bat = cat replacement
+  programs.bat = {
+    enable = true;
+    config = {
+      style = "numbers,changes,header";
+    };
   };
 
   # do not touch
