@@ -13,7 +13,6 @@
   home.packages = with pkgs; [
     # shell
     fzf
-    zoxide
     hexyl
   ];
 
@@ -62,6 +61,12 @@
     config = {
       style = "numbers,changes,header";
     };
+  };
+
+  # zoxide = cd replacement
+  programs.zoxide = {
+    enable = true;
+    options = [ "--cmd" "cd" ];
   };
 
   # do not touch
