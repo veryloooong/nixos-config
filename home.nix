@@ -13,6 +13,9 @@
   home.packages = with pkgs; [
     # shell
     hexyl
+
+    # productivity
+    thunderbird
   ];
 
   # === DEVELOPMENT ===
@@ -72,6 +75,16 @@
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
+  };
+
+  # zellij = tmux but noob
+  programs.zellij = {
+    enable = true;
+    enableZshIntegration = true;
+    settings = {
+      theme = "one-half-dark";
+      default-mode = "locked";
+    };
   };
 
   # do not touch
