@@ -19,7 +19,7 @@
 
     # language servers
     nixd
-    rust-analyzer
+    #rust-analyzer
     clang-tools
     pyright
 
@@ -108,6 +108,7 @@
     settings = {
       theme = "one-half-dark";
       default_mode = "locked";
+      show_startup_tips = false;
     };
   };
 
