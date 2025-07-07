@@ -14,6 +14,7 @@
     # shell
     fzf
     zoxide
+    hexyl
   ];
 
   # === DEVELOPMENT ===
