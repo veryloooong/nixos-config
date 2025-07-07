@@ -16,6 +16,7 @@
     shellAliases = {
       ls = "eza";
       system-update = "sudo nixos-rebuild switch";
+      cat = "bat";
     };
 
     # history
