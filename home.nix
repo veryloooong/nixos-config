@@ -16,6 +16,22 @@
 
     # productivity
     thunderbird
+
+    # language servers
+    nixd
+    rust-analyzer
+    clang-tools
+    pyright
+
+    # formatters
+    nixpkgs-fmt
+    ruff
+
+    # runtimes
+    nodenv
+    uv
+    rustup
+    gcc
   ];
 
   # === DEVELOPMENT ===
@@ -43,6 +59,14 @@
     extraPackages = with pkgs; [
       gamescope
       gamemode
+    ];
+  };
+
+  # obs
+  programs.obs-studio = {
+    enable = true;
+    plugins = [
+      pkgs.obs-studio-plugins.obs-vkcapture
     ];
   };
 

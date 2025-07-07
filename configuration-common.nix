@@ -91,6 +91,7 @@
 
     # development
     git
+    sccache
 
     # productivity
     brave
