@@ -32,6 +32,10 @@
     uv
     rustup
     gcc
+
+    # debugging
+    lldb
+    gdb
   ];
 
   # === DEVELOPMENT ===
