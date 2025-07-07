@@ -83,7 +83,7 @@
     enableZshIntegration = true;
     settings = {
       theme = "one-half-dark";
-      default-mode = "locked";
+      default_mode = "locked";
     };
   };
 
