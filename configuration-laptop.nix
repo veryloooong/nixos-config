@@ -28,8 +28,9 @@
       ];
     })
 
-    # Privacy
-    kdePackages.plasma-vault
+    # KDE specific
+    kdePackages.plasma-vault # Encrypted folders
+    kdePackages.kup # Backup
   ];
 
   # KDE Connect
