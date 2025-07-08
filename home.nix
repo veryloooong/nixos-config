@@ -13,6 +13,7 @@
   home.packages = with pkgs; [
     # shell
     hexyl
+    android-tools # adb and others
 
     # productivity
     thunderbird
