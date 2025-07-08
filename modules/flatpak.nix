@@ -1,5 +1,5 @@
 # Flatpak management
-{ lib, ... }:
+{ ... }:
 
 {
   services.flatpak.uninstallUnmanaged = true;

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 {
   imports = [
@@ -18,7 +18,7 @@
   services.xserver.videoDrivers = [ "vmware" ];
   virtualisation.vmware.guest.enable = true;
 
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = [
   ];
 
   # This value determines the NixOS release from which the default
