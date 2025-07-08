@@ -100,7 +100,7 @@
     sccache
 
     # productivity
-    brave
+    chromium
   ];
 
   # fonts
