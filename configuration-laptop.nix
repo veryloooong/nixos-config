@@ -27,6 +27,9 @@
         pkgs.gamemode
       ];
     })
+
+    # Privacy
+    kdePackages.plasma-vault
   ];
 
   # KDE Connect
