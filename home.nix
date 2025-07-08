@@ -34,7 +34,10 @@
     uv
     rustup
     gcc
+
+    # MATLAB/Octave stuff
     octaveFull
+    octavePackages.statistics
 
     # debugging
     lldb # for rust
