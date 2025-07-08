@@ -23,7 +23,7 @@
     pyright
 
     # formatters
-    nixpkgs-fmt
+    nixfmt-rfc-style
     ruff
 
     # runtimes

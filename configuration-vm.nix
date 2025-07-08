@@ -1,10 +1,10 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-     ./hardware-configuration-vm.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration-vm.nix
+  ];
 
   # Bootloader.
   boot.loader.grub.enable = true;

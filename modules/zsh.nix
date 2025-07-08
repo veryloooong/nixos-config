@@ -33,12 +33,12 @@
     plugins = [
       {
         name = "fzf-tab";
-	src = pkgs.fetchFromGitHub {
-	  owner = "Aloxaf";
-	  repo = "fzf-tab";
-	  rev = "v1.2.0";
-	  sha256 = "q26XVS/LcyZPRqDNwKKA9exgBByE0muyuNb0Bbar2lY=";
-	};
+        src = pkgs.fetchFromGitHub {
+          owner = "Aloxaf";
+          repo = "fzf-tab";
+          rev = "v1.2.0";
+          sha256 = "q26XVS/LcyZPRqDNwKKA9exgBByE0muyuNb0Bbar2lY=";
+        };
       }
     ];
 
@@ -51,6 +51,8 @@
   programs.oh-my-posh = {
     enable = true;
     enableZshIntegration = true;
-    settings = builtins.fromTOML (builtins.unsafeDiscardStringContext (builtins.readFile ../config/omp.toml));
+    settings = builtins.fromTOML (
+      builtins.unsafeDiscardStringContext (builtins.readFile ../config/omp.toml)
+    );
   };
 }

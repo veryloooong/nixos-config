@@ -11,39 +11,49 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak";
   };
 
-  outputs = inputs@{ self, nixpkgs, determinate, nix-flatpak, home-manager, ... }:
-  let 
-    system = "x86_64-linux";
-    common-modules = [
-      ./configuration-common.nix
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      determinate,
+      nix-flatpak,
+      home-manager,
+      ...
+    }:
+    let
+      system = "x86_64-linux";
+      common-modules = [
+        ./configuration-common.nix
 
-      # Determinate has garbage collection + Flakehub search
-      determinate.nixosModules.default
+        # Determinate has garbage collection + Flakehub search
+        determinate.nixosModules.default
 
-      # flatpaks
-      nix-flatpak.nixosModules.nix-flatpak
-      ./modules/flatpak.nix
+        # flatpaks
+        nix-flatpak.nixosModules.nix-flatpak
+        ./modules/flatpak.nix
 
-      # home manager
-      home-manager.nixosModules.home-manager {
-        home-manager.useGlobalPkgs = true;
-	home-manager.useUserPackages = true;
-	home-manager.users.veryloooong = import ./home.nix;
-      }
-    ];
-  in {
-    nixosConfigurations.nixos-vm = nixpkgs.lib.nixosSystem {
-      inherit system;
-      modules = [
-        ./configuration-vm.nix
-      ] ++ common-modules;
+        # home manager
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.veryloooong = import ./home.nix;
+        }
+      ];
+    in
+    {
+      nixosConfigurations.nixos-vm = nixpkgs.lib.nixosSystem {
+        inherit system;
+        modules = [
+          ./configuration-vm.nix
+        ] ++ common-modules;
+      };
+
+      nixosConfigurations.lebobo = nixpkgs.lib.nixosSystem {
+        inherit system;
+        modules = [
+          ./configuration-laptop.nix
+        ] ++ common-modules;
+      };
     };
-
-    nixosConfigurations.lebobo = nixpkgs.lib.nixosSystem {
-      inherit system;
-      modules = [
-        ./configuration-laptop.nix
-      ] ++ common-modules;
-    };
-  };
 }

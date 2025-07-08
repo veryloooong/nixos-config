@@ -2,7 +2,10 @@
 
 {
   # Enable flakes and the new Nix CLI
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Use latest kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -29,7 +32,10 @@
   i18n.inputMethod = {
     enable = true;
     type = "fcitx5";
-    fcitx5.addons = with pkgs; [ fcitx5-rime kdePackages.fcitx5-unikey ];
+    fcitx5.addons = with pkgs; [
+      fcitx5-rime
+      kdePackages.fcitx5-unikey
+    ];
     fcitx5.waylandFrontend = true;
   };
 
@@ -110,23 +116,34 @@
   # bindfs for theming
   system.fsPackages = [ pkgs.bindfs ];
 
-  fileSystems = let
-    mkRoSymBind = path: {
-      device = path;
-      fsType = "fuse.bindfs";
-      options = [ "ro" "resolve-symlinks" "x-gvfs-hide" ];
-    };
-    aggregated = pkgs.buildEnv {
+  fileSystems =
+    let
+      mkRoSymBind = path: {
+        device = path;
+        fsType = "fuse.bindfs";
+        options = [
+          "ro"
+          "resolve-symlinks"
+          "x-gvfs-hide"
+        ];
+      };
+      aggregated = pkgs.buildEnv {
         name = "system-fonts-and-icons";
-        paths = config.fonts.packages ++ (with pkgs; [
-          bibata-cursors
-        ]);
-        pathsToLink = [ "/share/fonts" "/share/icons" ];
+        paths =
+          config.fonts.packages
+          ++ (with pkgs; [
+            bibata-cursors
+          ]);
+        pathsToLink = [
+          "/share/fonts"
+          "/share/icons"
+        ];
+      };
+    in
+    {
+      "/usr/share/fonts" = mkRoSymBind "${aggregated}/share/fonts";
+      "/usr/share/icons" = mkRoSymBind "${aggregated}/share/icons";
     };
-  in {
-    "/usr/share/fonts" = mkRoSymBind "${aggregated}/share/fonts";
-    "/usr/share/icons" = mkRoSymBind "${aggregated}/share/icons";
-  };
 
   # Make Neovim the default editor even though I use VSCode because VIM is some unc type shi
   programs.neovim = {
@@ -162,8 +179,8 @@
   # Enable the OpenSSH daemon
   services.openssh.enable = true;
 
-  # Open ports in the firewall 
-  networking.firewall.allowedTCPPorts = [ 
+  # Open ports in the firewall
+  networking.firewall.allowedTCPPorts = [
     22 # SSH
   ];
 
