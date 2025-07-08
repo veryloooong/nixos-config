@@ -17,6 +17,7 @@
       ls = "eza";
       cat = "bat";
       system-update = "sudo nixos-rebuild switch";
+      code = "code --ozone-platform-hint=auto --enable-wayland-ime";
     };
 
     # history
