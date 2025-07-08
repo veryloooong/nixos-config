@@ -6,7 +6,7 @@
   ];
 
   programs.home-manager.enable = true;
-  
+
   home.username = "veryloooong";
   home.homeDirectory = "/home/veryloooong";
 
@@ -17,6 +17,8 @@
 
     # productivity
     thunderbird
+    onedrive
+    onedrivegui
 
     # language servers
     nixd
@@ -35,7 +37,7 @@
 
     # debugging
     lldb # for rust
-    gdb  # for c++
+    gdb # for c++
   ];
 
   # === DEVELOPMENT ===
@@ -58,7 +60,8 @@
   };
 
   # rustfmt
-  home.file.".config/rustfmt/rustfmt.toml".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/config/rustfmt.toml";
+  home.file.".config/rustfmt/rustfmt.toml".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/config/rustfmt.toml";
 
   # === GAMING ===
   programs.lutris = {
@@ -99,7 +102,10 @@
   # zoxide = cd replacement
   programs.zoxide = {
     enable = true;
-    options = [ "--cmd" "cd" ];
+    options = [
+      "--cmd"
+      "cd"
+    ];
   };
 
   # fzf = fuzzy finder
@@ -121,4 +127,3 @@
   # do not touch
   home.stateVersion = "25.11";
 }
-
