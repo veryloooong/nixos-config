@@ -28,9 +28,14 @@
       ];
     })
 
-    # KDE specific
+    # utility
+    cheese # camera app
+
+    # KDE
     kdePackages.plasma-vault # Encrypted folders
     kdePackages.kup # Backup
+    kdePackages.kcalc # Calculator
+    #kdePackages.kamoso # Laptop camera // why is it broken??? qt5 type shi
   ];
 
   # KDE Connect

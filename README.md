@@ -5,9 +5,9 @@ One Git repo for NixOS configs for both my VMs and my laptop but I will install 
 ## Todos
 
 - [x] `home-manager` and user settings
-- [ ] Setup productivity suite
-- [ ] OneDrive
-- [ ] Unite configurations (same on laptop and VM, just with a different hardware config)
+- [ ] Setup productivity suite (for me is 
+- [x] OneDrive
+- [x] Unite configurations (same on laptop and VM, just with a different hardware config)
 - [ ] Makefile or something convenient (or no need)
 
 ## Setup
@@ -17,9 +17,9 @@ One Git repo for NixOS configs for both my VMs and my laptop but I will install 
 git clone https://github.com/veryloooong/nixos-config ~/nix
 
 # Symlink to /etc/nixos
-sudo ln -s ~/nix/nixos /etc/nixos
+sudo ln -s ~/nix /etc/nixos
 
 # Edit all of the files for yourself! Change the username and hostname as you'd like.
 # Then just rebuild the system
-sudo nixos-rebuilt switch
+sudo nixos-rebuild switch
 ```
