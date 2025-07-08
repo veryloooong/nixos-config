@@ -57,7 +57,7 @@
   };
 
   # rustfmt
-  home.file.".config/rustfmt/rustfmt.toml".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/config/rustfmt.toml"
+  home.file.".config/rustfmt/rustfmt.toml".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/config/rustfmt.toml";
 
   # === GAMING ===
   programs.lutris = {
