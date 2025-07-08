@@ -19,7 +19,6 @@
 
     # language servers
     nixd
-    #rust-analyzer
     clang-tools
     pyright
 
@@ -34,8 +33,8 @@
     gcc
 
     # debugging
-    lldb
-    gdb
+    lldb # for rust
+    gdb  # for c++
   ];
 
   # === DEVELOPMENT ===
@@ -56,6 +55,9 @@
     enable = true;
     package = pkgs.vscode.fhs;
   };
+
+  # rustfmt
+  home.file.".config/rustfmt/rustfmt.toml".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/config/rustfmt.toml"
 
   # === GAMING ===
   programs.lutris = {
