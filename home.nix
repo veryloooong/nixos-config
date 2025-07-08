@@ -34,6 +34,7 @@
     uv
     rustup
     gcc
+    octaveFull
 
     # debugging
     lldb # for rust
