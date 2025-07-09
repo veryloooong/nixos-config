@@ -14,11 +14,14 @@
     # shell
     hexyl
     android-tools # adb and others
+    yt-dlp
+    ffmpeg
 
     # productivity
     thunderbird
     onedrive
     onedrivegui
+    viber
 
     # language servers
     nixd
