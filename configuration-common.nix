@@ -154,7 +154,12 @@
   };
 
   # Enable nix-ld to run all binaries
-  programs.nix-ld.enable = true;
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      libxml2
+    ];
+  };
 
   # Enable flatpaks
   services.flatpak.enable = true;

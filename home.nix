@@ -21,7 +21,6 @@
     thunderbird
     onedrive
     onedrivegui
-    viber
 
     # language servers
     nixd
