@@ -45,6 +45,9 @@
     # debugging
     lldb # for rust
     gdb # for c++
+
+    # entertainment
+    vesktop
   ];
 
   # === DEVELOPMENT ===
