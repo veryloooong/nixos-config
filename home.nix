@@ -35,9 +35,10 @@
     rustup
     gcc
 
-    # MATLAB/Octave stuff
+    # Research software
     octaveFull
     octavePackages.statistics
+    anydesk # Remote into server
 
     # debugging
     lldb # for rust
