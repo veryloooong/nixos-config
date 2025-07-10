@@ -16,6 +16,7 @@
     android-tools # adb and others
     yt-dlp
     ffmpeg
+    fastfetch
 
     # productivity
     thunderbird
