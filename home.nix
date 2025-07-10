@@ -17,6 +17,7 @@
     yt-dlp
     ffmpeg
     fastfetch
+    hyperfine
 
     # productivity
     thunderbird
