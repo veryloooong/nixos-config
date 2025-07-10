@@ -24,6 +24,7 @@
     onedrive
     onedrivegui
     pkgs-softmaker.softmaker-office
+    anki
 
     # language servers
     nixd
