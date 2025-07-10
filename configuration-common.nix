@@ -77,7 +77,7 @@
   users.users.veryloooong = {
     isNormalUser = true;
     description = "Hải Long";
-    extraGroups = [ "wheel" ]; # sudo access
+    extraGroups = [ "wheel" "libvirtd" ]; # sudo access
     shell = pkgs.zsh;
     useDefaultShell = true;
   };

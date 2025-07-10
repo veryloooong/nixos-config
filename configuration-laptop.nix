@@ -72,5 +72,12 @@
     gamescopeSession.enable = true;
   };
 
+  # Virtualisation
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu.vhostUserPackages = with pkgs; [ virtiofsd ];
+  };
+  programs.virt-manager.enable = true;
+
   system.stateVersion = "25.11"; # Did you read the comment?
 }
