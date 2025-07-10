@@ -5,10 +5,11 @@ One Git repo for NixOS configs for both my VMs and my laptop but I will install 
 ## Todos
 
 - [x] `home-manager` and user settings
-- [ ] Setup productivity suite (for me is 
+- [x] Setup productivity suite (for me is SoftMaker Office 2021 because I have a licence key)
 - [x] OneDrive
 - [x] Unite configurations (same on laptop and VM, just with a different hardware config)
-- [ ] Makefile or something convenient (or no need)
+- [x] Makefile or something convenient (or no need)
+- [x] Virtualisation
 
 ## Setup
 
