@@ -51,6 +51,7 @@
 
     # entertainment
     vesktop
+    stremio
   ];
 
   # === DEVELOPMENT ===
