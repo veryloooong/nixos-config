@@ -98,6 +98,7 @@
     # development
     git
     sccache
+    gnumake
 
     # productivity
     chromium
