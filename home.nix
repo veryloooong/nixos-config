@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, pkgs-softmaker, ... }:
 
 {
   imports = [
@@ -22,6 +22,7 @@
     thunderbird
     onedrive
     onedrivegui
+    pkgs-softmaker.softmaker-office
 
     # language servers
     nixd

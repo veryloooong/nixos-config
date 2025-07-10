@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs-softmaker.url = "github:nixos/nixpkgs/566e53c2ad750c84f6d31f9ccb9d00f823165550";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -38,6 +39,12 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.veryloooong = import ./home.nix;
+	  home-manager.extraSpecialArgs = {
+	    pkgs-softmaker = import inputs.nixpkgs-softmaker {
+	      inherit system;
+	      config.allowUnfree = true;
+	    };
+	  };
         }
       ];
     in
