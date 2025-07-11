@@ -28,9 +28,7 @@
     anki
 
     # security work
-    (burpsuite.override {
-      proEdition = true;
-    })
+    burpsuite
 
     # language servers
     nixd
