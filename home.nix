@@ -45,7 +45,6 @@
     nodenv
     uv
     rustup
-    gcc
 
     # Research software
     octaveFull

@@ -6,6 +6,7 @@
     "nix-command"
     "flakes"
   ];
+  nix.settings.trusted-users = [ "root" "veryloooong" ];
 
   # Use latest kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
