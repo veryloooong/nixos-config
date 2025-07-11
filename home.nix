@@ -18,6 +18,7 @@
     ffmpeg
     fastfetch
     hyperfine
+    devenv
 
     # productivity
     thunderbird
@@ -72,6 +73,13 @@
   programs.vscode = {
     enable = true;
     package = pkgs.vscode.fhs;
+  };
+  
+  # direnv
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true; # see note on other shells below
+    nix-direnv.enable = true;
   };
 
   # rustfmt
