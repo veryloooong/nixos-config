@@ -27,6 +27,11 @@
     pkgs-softmaker.softmaker-office
     anki
 
+    # security work
+    (burpsuite.override {
+      proEdition = true;
+    })
+
     # language servers
     nixd
     clang-tools
@@ -54,6 +59,7 @@
     # entertainment
     vesktop
     stremio
+    vlc
   ];
 
   # === DEVELOPMENT ===
