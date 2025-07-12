@@ -113,6 +113,7 @@
     noto-fonts
     noto-fonts-emoji
     noto-fonts-cjk-sans
+    corefonts
   ];
 
   # bindfs for theming
