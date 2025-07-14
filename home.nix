@@ -18,7 +18,6 @@
     ffmpeg
     fastfetch
     hyperfine
-    devenv
 
     # productivity
     thunderbird
