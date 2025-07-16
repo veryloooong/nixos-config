@@ -144,11 +144,6 @@
   # zellij = tmux but noob
   programs.zellij = {
     enable = true;
-    settings = {
-      theme = "one-half-dark";
-      default_mode = "locked";
-      show_startup_tips = false;
-    };
   };
 
   # do not touch
