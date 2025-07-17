@@ -30,7 +30,7 @@
     burpsuite
     sleuthkit
     autopsy
-    volatility
+    volatility3
     testdisk
     exiftool
 
