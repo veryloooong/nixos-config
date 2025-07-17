@@ -17,7 +17,6 @@
     yt-dlp
     ffmpeg
     hyperfine
-    bitwarden-cli
 
     # productivity
     thunderbird
