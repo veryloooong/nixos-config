@@ -28,11 +28,6 @@
 
     # security work
     burpsuite
-    sleuthkit
-    autopsy
-    volatility3
-    testdisk
-    exiftool
 
     # language servers
     nixd
