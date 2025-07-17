@@ -39,7 +39,6 @@
     ruff
 
     # runtimes
-    nodenv
     uv
     rustup
 
