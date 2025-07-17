@@ -16,8 +16,8 @@
     android-tools # adb and others
     yt-dlp
     ffmpeg
-    fastfetch
     hyperfine
+    bitwarden-cli
 
     # productivity
     thunderbird
@@ -25,6 +25,7 @@
     onedrivegui
     pkgs-softmaker.softmaker-office
     anki
+    vscode-runner
 
     # security work
     burpsuite
