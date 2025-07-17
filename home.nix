@@ -27,9 +27,12 @@
     anki
 
     # security work
-    (burpsuite.override {
-      proEdition = true;
-    })
+    burpsuite
+    sleuthkit
+    autopsy
+    volatility
+    testdisk
+    exiftool
 
     # language servers
     nixd
