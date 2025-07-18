@@ -1,4 +1,9 @@
-{ config, pkgs, pkgs-softmaker, ... }:
+{
+  config,
+  pkgs,
+  pkgs-softmaker,
+  ...
+}:
 
 {
   imports = [
@@ -75,7 +80,7 @@
     enable = true;
     package = pkgs.vscode.fhs;
   };
-  
+
   # direnv
   programs.direnv = {
     enable = true;
@@ -83,9 +88,16 @@
     nix-direnv.enable = true;
   };
 
-  # rustfmt
-  home.file.".config/rustfmt/rustfmt.toml".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/config/rustfmt.toml";
+  # other dotfiles
+  # home.file.".config/rustfmt/rustfmt.toml".source =
+  #   config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/config/rustfmt.toml";
+
+  home.file = {
+    ".config/rustfmt/rustfmt.toml".source =
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/config/rustfmt/rustfmt.toml";
+    ".config/zellij/config.kdl".source =
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/config/zellij/config.kdl";
+  };
 
   # === GAMING ===
   programs.lutris = {
