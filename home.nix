@@ -22,6 +22,8 @@
     yt-dlp
     ffmpeg
     hyperfine
+    dust
+    p7zip
 
     # productivity
     thunderbird
