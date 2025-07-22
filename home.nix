@@ -24,6 +24,7 @@
     hyperfine
     dust
     p7zip
+    devenv
 
     # productivity
     thunderbird
