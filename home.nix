@@ -33,6 +33,7 @@
     pkgs-softmaker.softmaker-office
     anki
     vscode-runner
+    zoom-us
 
     # security work
     burpsuite

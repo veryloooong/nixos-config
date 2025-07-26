@@ -11,6 +11,9 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.plymouth.enable = true;
 
+  # swap fix
+  boot.resumeDevice = "/dev/disk/by-label/swap"; # Replace with your actual swap UUID
+
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
