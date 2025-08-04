@@ -12,9 +12,10 @@
 
   programs.home-manager.enable = true;
 
+  fonts.fontconfig.enable = true;
+
   home.username = "veryloooong";
   home.homeDirectory = "/home/veryloooong";
-
   home.packages = with pkgs; [
     # shell
     hexyl
@@ -34,6 +35,7 @@
     anki
     vscode-runner
     zoom-us
+    kdePackages.kolourpaint
 
     # security work
     burpsuite
@@ -61,6 +63,7 @@
     gdb # for c++
 
     # entertainment
+    qbittorrent
     vesktop
     stremio
     vlc

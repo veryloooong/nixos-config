@@ -1,12 +1,18 @@
 { config, pkgs, ... }:
 
+let
+  microsoft-aptos = pkgs.callPackage ./custom/aptos.nix { inherit pkgs; };
+in
 {
   # Enable flakes and the new Nix CLI
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
   ];
-  nix.settings.trusted-users = [ "root" "veryloooong" ];
+  nix.settings.trusted-users = [
+    "root"
+    "veryloooong"
+  ];
 
   # Use latest kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -78,7 +84,10 @@
   users.users.veryloooong = {
     isNormalUser = true;
     description = "Hải Long";
-    extraGroups = [ "wheel" "libvirtd" ]; # sudo access
+    extraGroups = [
+      "wheel"
+      "libvirtd"
+    ]; # sudo access
     shell = pkgs.zsh;
     useDefaultShell = true;
   };
@@ -106,7 +115,8 @@
   ];
 
   # fonts
-  fonts.fontDir.enable = true;
+  # fonts.fontDir.enable = true;
+  fonts.enableDefaultPackages = true;
   fonts.packages = with pkgs; [
     cascadia-code
     inter
@@ -114,6 +124,7 @@
     noto-fonts-emoji
     noto-fonts-cjk-sans
     corefonts
+    microsoft-aptos
   ];
 
   # bindfs for theming
