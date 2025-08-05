@@ -18,9 +18,6 @@
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
   networking.hostName = "lebobo"; # Define your hostname.
-  
-  # Captive browser
-  programs.captive-browser.enable = true;
 
   services.libinput.enable = true;
 
