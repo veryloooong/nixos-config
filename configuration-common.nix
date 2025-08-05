@@ -14,6 +14,16 @@ in
     "veryloooong"
   ];
 
+  # Enable GC
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 14d";
+  };
+
+  # Enable store optimisation
+  nix.optimise.automatic = true;
+
   # Use latest kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
