@@ -51,7 +51,6 @@
 
     # runtimes
     uv
-    rustup
 
     # Research software
     octaveFull
