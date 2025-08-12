@@ -37,6 +37,7 @@
     vscode-runner
     zoom-us
     kdePackages.kolourpaint
+    telegram-desktop
 
     # security work
     inputs.burpsuitepro.packages.${system}.default
