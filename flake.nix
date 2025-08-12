@@ -45,13 +45,13 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.veryloooong = import ./home.nix;
-	  home-manager.extraSpecialArgs = {
-	    inherit inputs;
-	    pkgs-softmaker = import inputs.nixpkgs-softmaker {
-	      inherit system;
-	      config.allowUnfree = true;
-	    };
-	  };
+          home-manager.extraSpecialArgs = {
+            inherit inputs;
+            pkgs-softmaker = import inputs.nixpkgs-softmaker {
+              inherit system;
+              config.allowUnfree = true;
+            };
+          };
         }
       ];
     in
@@ -60,14 +60,16 @@
         inherit system;
         modules = [
           ./configuration-vm.nix
-        ] ++ common-modules;
+        ]
+        ++ common-modules;
       };
 
       nixosConfigurations.lebobo = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
           ./configuration-laptop.nix
-        ] ++ common-modules;
+        ]
+        ++ common-modules;
       };
     };
 }
