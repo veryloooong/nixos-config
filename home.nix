@@ -1,4 +1,5 @@
 {
+  inputs,
   config,
   pkgs,
   pkgs-softmaker,
@@ -38,7 +39,7 @@
     kdePackages.kolourpaint
 
     # security work
-    burpsuite
+    inputs.burpsuitepro.packages.${system}.default
 
     # language servers
     nixd

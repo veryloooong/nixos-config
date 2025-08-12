@@ -10,6 +10,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-flatpak.url = "github:gmodena/nix-flatpak";
+    burpsuitepro = {
+      type = "github";
+      owner = "xiv3r";
+      repo = "Burpsuite-Professional";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -40,6 +46,7 @@
           home-manager.useUserPackages = true;
           home-manager.users.veryloooong = import ./home.nix;
 	  home-manager.extraSpecialArgs = {
+	    inherit inputs;
 	    pkgs-softmaker = import inputs.nixpkgs-softmaker {
 	      inherit system;
 	      config.allowUnfree = true;

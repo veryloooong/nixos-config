@@ -203,6 +203,7 @@ in
   # EnvVars
   environment.variables = {
     EDITOR = "nvim";
+    RUSTC_WRAPPER = "sccache";
   };
 
   # Enable the OpenSSH daemon

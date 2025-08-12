@@ -1,5 +1,25 @@
 {
   "nodes": {
+    "burpsuitepro": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1753146528,
+        "narHash": "sha256-o/TBJkOXUv3geSYfoV37PTYRoOZ7vTqoXU9SsDi929s=",
+        "owner": "xiv3r",
+        "repo": "Burpsuite-Professional",
+        "rev": "bc8d3e109d4d662cd3d1b9b89adf2f88c5e4b228",
+        "type": "github"
+      },
+      "original": {
+        "owner": "xiv3r",
+        "repo": "Burpsuite-Professional",
+        "type": "github"
+      }
+    },
     "determinate": {
       "inputs": {
         "determinate-nixd-aarch64-darwin": "determinate-nixd-aarch64-darwin",
@@ -274,6 +294,7 @@
     },
     "root": {
       "inputs": {
+        "burpsuitepro": "burpsuitepro",
         "determinate": "determinate",
         "home-manager": "home-manager",
         "nix-flatpak": "nix-flatpak",
