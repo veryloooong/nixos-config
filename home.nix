@@ -30,6 +30,7 @@
     dust
     p7zip
     devenv
+    unrar
 
     # productivity
     thunderbird
@@ -41,6 +42,7 @@
     zoom-us
     kdePackages.kolourpaint
     telegram-desktop
+    xournalpp
 
     # security work
     inputs.burpsuitepro.packages.${system}.default

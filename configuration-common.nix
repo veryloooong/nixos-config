@@ -114,6 +114,7 @@ in
     ripgrep
     wl-clipboard
     xsettingsd
+    kdePackages.plasma-browser-integration
 
     # development
     git
