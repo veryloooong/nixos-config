@@ -9,9 +9,12 @@
 {
   imports = [
     ./modules/zsh.nix
+    inputs.zen-browser.homeModules.twilight
   ];
 
   programs.home-manager.enable = true;
+  programs.zen-browser.enable = true;
+  programs.zen-browser.nativeMessagingHosts = [pkgs.firefoxpwa];
 
   fonts.fontconfig.enable = true;
 
