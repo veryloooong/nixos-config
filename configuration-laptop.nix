@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports = [
@@ -7,7 +7,15 @@
   ];
 
   # Bootloader and boot screen
-  boot.loader.systemd-boot.enable = true;
+  # boot.loader.systemd-boot.enable = true;
+
+  boot.loader.systemd-boot.enable = lib.mkForce false;
+
+    boot.lanzaboote = {
+      enable = true;
+      pkiBundle = "/var/lib/sbctl";
+    };
+
   boot.loader.efi.canTouchEfiVariables = true;
   boot.plymouth.enable = true;
 
@@ -22,6 +30,9 @@
   services.libinput.enable = true;
 
   environment.systemPackages = with pkgs; [
+    # secure boot
+    sbctl
+
     # Gaming
     protonup-qt
     (heroic.override {

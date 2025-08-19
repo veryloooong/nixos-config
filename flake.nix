@@ -20,6 +20,12 @@
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.2";
+
+      # Optional but recommended to limit the size of your system closure.
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -29,6 +35,7 @@
       determinate,
       nix-flatpak,
       home-manager,
+      lanzaboote,
       ...
     }:
     let
@@ -72,6 +79,7 @@
         inherit system;
         modules = [
           ./configuration-laptop.nix
+	  lanzaboote.nixosModules.lanzaboote
         ]
         ++ common-modules;
       };
