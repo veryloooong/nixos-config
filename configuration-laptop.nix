@@ -47,12 +47,14 @@
 
     # virtualisation
     swtpm
+    spice
+    spice-protocol
+    win-spice
 
     # KDE
     kdePackages.plasma-vault # Encrypted folders
     kdePackages.kup # Backup
     kdePackages.kcalc # Calculator
-    #kdePackages.kamoso # Laptop camera // why is it broken??? qt5 type shi
   ];
 
   # KDE Connect
@@ -101,6 +103,8 @@
     };
   };
   programs.virt-manager.enable = true;
+  services.spice-vdagentd.enable = true;
+
   environment.etc = {
     "ovmf/edk2-x86_64-secure-code.fd" = {
       source = config.virtualisation.libvirtd.qemu.package + "/share/qemu/edk2-x86_64-secure-code.fd";
