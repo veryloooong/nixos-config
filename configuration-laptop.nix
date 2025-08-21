@@ -55,6 +55,9 @@
     kdePackages.plasma-vault # Encrypted folders
     kdePackages.kup # Backup
     kdePackages.kcalc # Calculator
+
+    # Financial management
+    mmex
   ];
 
   # KDE Connect
