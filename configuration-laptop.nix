@@ -45,12 +45,6 @@
     # utility
     cheese # camera app
 
-    # virtualisation
-    swtpm
-    spice
-    spice-protocol
-    win-spice
-
     # KDE
     kdePackages.plasma-vault # Encrypted folders
     kdePackages.kup # Backup
@@ -93,20 +87,6 @@
     dedicatedServer.openFirewall = true;
     gamescopeSession.enable = true;
   };
-
-  # Virtualisation
-  virtualisation.libvirtd = {
-    enable = true;
-    qemu = {
-      package = pkgs.qemu_kvm;
-      ovmf.enable = true;
-      ovmf.packages = [ pkgs.OVMFFull.fd ];
-      swtpm.enable = true;
-      vhostUserPackages = [ pkgs.virtiofsd ];
-    };
-  };
-  programs.virt-manager.enable = true;
-  services.spice-vdagentd.enable = true;
 
   environment.etc = {
     "ovmf/edk2-x86_64-secure-code.fd" = {
