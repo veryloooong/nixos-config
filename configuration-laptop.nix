@@ -88,6 +88,11 @@
     gamescopeSession.enable = true;
   };
 
+  # Virtualisation
+  virtualisation.virtualbox.host.enable = true;
+  virtualisation.virtualbox.host.enableExtensionPack = true;
+  users.extraGroups.vboxusers.members = [ "root" "veryloooong" ];
+
   environment.etc = {
     "ovmf/edk2-x86_64-secure-code.fd" = {
       source = config.virtualisation.libvirtd.qemu.package + "/share/qemu/edk2-x86_64-secure-code.fd";
