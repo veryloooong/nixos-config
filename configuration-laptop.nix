@@ -52,6 +52,12 @@
 
     # Financial management
     mmex
+
+    # Virtualisation
+    spice
+    spice-protocol
+    win-spice
+
   ];
 
   # KDE Connect
@@ -89,9 +95,23 @@
   };
 
   # Virtualisation
-  virtualisation.virtualbox.host.enable = true;
-  virtualisation.virtualbox.host.enableExtensionPack = true;
-  users.extraGroups.vboxusers.members = [ "root" "veryloooong" ];
+  # virtualisation.virtualbox.host.enable = true;
+  # virtualisation.virtualbox.host.enableExtensionPack = true;
+  # users.extraGroups.vboxusers.members = [ "root" "veryloooong" ];
+  users.users.veryloooong.extraGroups = [ "libvirtd" ];
+  programs.virt-manager.enable = true;
+  virtualisation = {
+    libvirtd = {
+      enable = true;
+      qemu = {
+        swtpm.enable = true;
+        ovmf.enable = true;
+        ovmf.packages = [ pkgs.OVMFFull.fd ];
+      };
+    };
+    spiceUSBRedirection.enable = true;
+  };
+  services.spice-vdagentd.enable = true;
 
   environment.etc = {
     "ovmf/edk2-x86_64-secure-code.fd" = {
