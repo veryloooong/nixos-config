@@ -1,4 +1,11 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  system ? pkgs.system,
+  winapps,
+  ...
+}:
 
 {
   imports = [
@@ -11,10 +18,10 @@
 
   boot.loader.systemd-boot.enable = lib.mkForce false;
 
-    boot.lanzaboote = {
-      enable = true;
-      pkiBundle = "/var/lib/sbctl";
-    };
+  boot.lanzaboote = {
+    enable = true;
+    pkiBundle = "/var/lib/sbctl";
+  };
 
   boot.loader.efi.canTouchEfiVariables = true;
   boot.plymouth.enable = true;
@@ -54,10 +61,8 @@
     mmex
 
     # Virtualisation
-    spice
-    spice-protocol
-    win-spice
-
+    winapps.packages."${system}".winapps
+    winapps.packages."${system}".winapps-launcher # optional
   ];
 
   # KDE Connect
@@ -95,23 +100,12 @@
   };
 
   # Virtualisation
-  # virtualisation.virtualbox.host.enable = true;
-  # virtualisation.virtualbox.host.enableExtensionPack = true;
-  # users.extraGroups.vboxusers.members = [ "root" "veryloooong" ];
-  users.users.veryloooong.extraGroups = [ "libvirtd" ];
-  programs.virt-manager.enable = true;
-  virtualisation = {
-    libvirtd = {
-      enable = true;
-      qemu = {
-        swtpm.enable = true;
-        ovmf.enable = true;
-        ovmf.packages = [ pkgs.OVMFFull.fd ];
-      };
-    };
-    spiceUSBRedirection.enable = true;
-  };
-  services.spice-vdagentd.enable = true;
+  virtualisation.docker.enable = true;
+  virtualisation.docker.rootless = {
+  enable = true;
+  setSocketVariable = true;
+};
+
 
   environment.etc = {
     "ovmf/edk2-x86_64-secure-code.fd" = {

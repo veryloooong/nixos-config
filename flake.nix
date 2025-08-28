@@ -26,6 +26,10 @@
       # Optional but recommended to limit the size of your system closure.
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    winapps = {
+      url = "github:winapps-org/winapps";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -36,6 +40,7 @@
       nix-flatpak,
       home-manager,
       lanzaboote,
+      winapps,
       ...
     }:
     let
@@ -75,11 +80,15 @@
         ++ common-modules;
       };
 
-      nixosConfigurations.lebobo = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.lebobo = nixpkgs.lib.nixosSystem rec {
+        specialArgs = {
+	  inherit winapps system;
+        };
         inherit system;
         modules = [
           ./configuration-laptop.nix
-	  lanzaboote.nixosModules.lanzaboote
+          lanzaboote.nixosModules.lanzaboote
+
         ]
         ++ common-modules;
       };
