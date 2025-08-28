@@ -82,6 +82,15 @@
     enable = true;
     userEmail = "hailong2004ptcnn@gmail.com";
     userName = "Hải Long";
+    delta = {
+      enable = true;
+      options = {
+        side-by-side = true;
+	line-numbers = true;
+	dark = true;
+	syntax-theme = "OneHalfDark";
+      };
+    };
   };
   programs.gh = {
     enable = true;
