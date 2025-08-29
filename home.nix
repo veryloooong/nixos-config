@@ -33,6 +33,7 @@
     unrar
 
     # productivity
+    viber
     thunderbird
     onedrive
     onedrivegui
