@@ -82,7 +82,7 @@
 
       nixosConfigurations.lebobo = nixpkgs.lib.nixosSystem rec {
         specialArgs = {
-	  inherit winapps system;
+          inherit winapps system;
         };
         inherit system;
         modules = [

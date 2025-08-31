@@ -4,6 +4,11 @@ let
   microsoft-aptos = pkgs.callPackage ./custom/aptos.nix { inherit pkgs; };
 in
 {
+  # TODO: remove when it is resolved?
+  nixpkgs.config.permittedInsecurePackages = [
+    "qtwebengine-5.15.19"
+  ];
+
   # Enable flakes and the new Nix CLI
   nix.settings.experimental-features = [
     "nix-command"
