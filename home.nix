@@ -61,8 +61,11 @@
     uv
 
     # Research software
-    octaveFull
-    octavePackages.statistics
+    (octaveFull.withPackages (
+      opkgs: with opkgs; [
+        statistics
+      ]
+    ))
     anydesk # Remote into server
 
     # debugging
