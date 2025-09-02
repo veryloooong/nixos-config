@@ -7,5 +7,6 @@
   services.flatpak.packages = [
     "com.usebottles.bottles"
     "app.twintaillauncher.ttl"
+    "org.vinegarhq.Sober"
   ];
 }
