@@ -105,6 +105,7 @@
     enable = true;
     setSocketVariable = true;
   };
+  virtualisation.waydroid.enable = true;
 
   environment.etc = {
     "ovmf/edk2-x86_64-secure-code.fd" = {
