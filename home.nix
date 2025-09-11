@@ -31,6 +31,7 @@
     p7zip
     devenv
     unrar
+    warp-terminal
 
     # productivity
     viber
@@ -94,6 +95,13 @@
         dark = true;
         syntax-theme = "OneHalfDark";
       };
+    };
+    aliases = {
+      co = "checkout";
+      cam = "commit -am";
+      pl = "pull";
+      f = "fetch";
+      ph = "push";
     };
   };
   programs.gh = {
