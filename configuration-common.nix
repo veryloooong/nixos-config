@@ -1,7 +1,8 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 let
   microsoft-aptos = pkgs.callPackage ./custom/aptos.nix { inherit pkgs; };
+  capacities = import ./custom/capacities.nix { inherit pkgs lib; };
 in
 {
   # TODO: remove when it is resolved?
@@ -128,6 +129,7 @@ in
 
     # productivity
     chromium
+    capacities
   ];
 
   # fonts
@@ -193,6 +195,10 @@ in
 
   # Enable flatpaks
   services.flatpak.enable = true;
+
+  # Enable appimages
+  programs.appimage.enable = true;
+  programs.appimage.binfmt = true;
 
   # Enable portal
   xdg.portal = {
