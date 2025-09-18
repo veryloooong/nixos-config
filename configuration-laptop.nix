@@ -26,6 +26,10 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.plymouth.enable = true;
 
+  # Firmware/hardware stuff
+  hardware.cpu.amd.updateMicrocode = true;
+  services.fwupd.enable = true;
+
   # swap fix
   boot.resumeDevice = "/dev/disk/by-label/swap"; # Replace with your actual swap UUID
 

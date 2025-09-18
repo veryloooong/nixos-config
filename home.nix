@@ -45,6 +45,7 @@
     kdePackages.kolourpaint
     telegram-desktop
     xournalpp
+    teams-for-linux
 
     # security work
     inputs.burpsuitepro.packages.${system}.default
@@ -78,6 +79,9 @@
     vesktop
     stremio
     vlc
+
+    # wine
+    inputs.nix-gaming.packages.${pkgs.system}.wine-ge
   ];
 
   # === DEVELOPMENT ===
