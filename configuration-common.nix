@@ -231,6 +231,9 @@ in
     22 # SSH
   ];
 
+  # mitmproxy cert
+  security.pki.certificateFiles = [ ./browser/mitmproxy-ca-cert.pem ];
+
   # do not touch
   system.stateVersion = "25.11"; # Did you read the comment?
 }
