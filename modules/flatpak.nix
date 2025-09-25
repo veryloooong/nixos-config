@@ -8,5 +8,6 @@
     "com.usebottles.bottles"
     "app.twintaillauncher.ttl"
     "org.vinegarhq.Sober"
+    "com.bishwasaha.Koncentro"
   ];
 }

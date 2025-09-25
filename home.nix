@@ -144,6 +144,7 @@
     extraPackages = with pkgs; [
       gamescope
       gamemode
+      mangohud
     ];
   };
 
