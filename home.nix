@@ -46,6 +46,7 @@
     telegram-desktop
     xournalpp
     teams-for-linux
+    davinci-resolve
 
     # security work
     inputs.burpsuitepro.packages.${system}.default
@@ -63,11 +64,6 @@
     uv
 
     # Research software
-    (octaveFull.withPackages (
-      opkgs: with opkgs; [
-        statistics
-      ]
-    ))
     anydesk # Remote into server
 
     # debugging
