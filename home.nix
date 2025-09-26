@@ -106,6 +106,11 @@
       pl = "pull";
       f = "fetch";
       ph = "push";
+      aa = "add .";
+      a = "add";
+    };
+    extraConfig = {
+      init.defaultBranch = "main";
     };
   };
   programs.gh = {
