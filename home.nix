@@ -46,7 +46,7 @@
     telegram-desktop
     xournalpp
     teams-for-linux
-    davinci-resolve
+    kdePackages.kdenlive
 
     # security work
     inputs.burpsuitepro.packages.${system}.default
