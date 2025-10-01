@@ -68,6 +68,8 @@
     winapps.packages."${system}".winapps
     winapps.packages."${system}".winapps-launcher # optional
     distrobox
+    podman-compose
+    crun
   ];
 
   # KDE Connect
@@ -105,12 +107,14 @@
   };
 
   # Virtualisation
-  virtualisation.docker.enable = true;
-  virtualisation.docker.rootless = {
-    enable = true;
-    setSocketVariable = true;
-  };
   virtualisation.waydroid.enable = true;
+  virtualisation.containers.enable = true;
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+    defaultNetwork.settings.dns_enabled = true;
+  };
+  users.users.veryloooong.extraGroups = [ "podman" "kvm" ];
 
   environment.etc = {
     "ovmf/edk2-x86_64-secure-code.fd" = {
@@ -120,6 +124,10 @@
     "ovmf/edk2-i386-vars.fd" = {
       source = config.virtualisation.libvirtd.qemu.package + "/share/qemu/edk2-i386-vars.fd";
     };
+
+    "distrobox/distrobox.conf".text = ''
+  container_additional_volumes="/nix/store:/nix/store:ro /etc/profiles/per-user:/etc/profiles/per-user:ro /etc/static/profiles/per-user:/etc/static/profiles/per-user:ro"
+'';
   };
 
   system.stateVersion = "25.11"; # Did you read the comment?

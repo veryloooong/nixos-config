@@ -20,6 +20,9 @@
 
   home.username = "veryloooong";
   home.homeDirectory = "/home/veryloooong";
+  home.sessionPath = [
+    "$HOME/.local/bin"
+  ];
   home.packages = with pkgs; [
     # shell
     hexyl
@@ -47,6 +50,7 @@
     xournalpp
     teams-for-linux
     kdePackages.kdenlive
+    drawio
 
     # security work
     inputs.burpsuitepro.packages.${system}.default
