@@ -77,7 +77,6 @@
     # entertainment
     qbittorrent
     vesktop
-    stremio
     vlc
 
     # wine
