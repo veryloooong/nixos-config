@@ -135,7 +135,7 @@ in
 
     # productivity
     chromium
-    #capacities
+    capacities
   ];
 
   # fonts
