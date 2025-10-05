@@ -66,6 +66,7 @@
 
     # runtimes
     uv
+    lua
     luarocks
 
     # Research software
