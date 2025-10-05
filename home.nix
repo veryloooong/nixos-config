@@ -66,6 +66,7 @@
 
     # runtimes
     uv
+    luarocks
 
     # Research software
     anydesk # Remote into server
