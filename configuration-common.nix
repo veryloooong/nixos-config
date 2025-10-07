@@ -127,6 +127,7 @@ in
     wl-clipboard
     xsettingsd
     kdePackages.plasma-browser-integration
+    kdePackages.filelight
 
     # development
     git
