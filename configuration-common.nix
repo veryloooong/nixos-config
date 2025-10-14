@@ -234,7 +234,7 @@ in
   ];
 
   # mitmproxy cert
-  security.pki.certificateFiles = [ ./browser/mitmproxy-ca-cert.pem ];
+  security.pki.certificates = [ (builtins.readFile ./browser/mitmproxy-ca-cert.pem) ];
 
   # do not touch
   system.stateVersion = "25.11"; # Did you read the comment?

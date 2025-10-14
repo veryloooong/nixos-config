@@ -107,13 +107,13 @@
   };
 
   # Virtualisation
-  virtualisation.waydroid.enable = true;
   virtualisation.containers.enable = true;
   virtualisation.podman = {
     enable = true;
     dockerCompat = true;
     defaultNetwork.settings.dns_enabled = true;
   };
+  virtualisation.vmware.host.enable = true;
   users.users.veryloooong.extraGroups = [ "podman" "kvm" ];
 
   environment.etc = {
