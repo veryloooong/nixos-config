@@ -44,13 +44,11 @@
     pkgs-softmaker.softmaker-office
     anki
     vscode-runner
-    zoom-us
     kdePackages.kolourpaint
-    telegram-desktop
     xournalpp
     teams-for-linux
     kdePackages.kdenlive
-    drawio
+    pdfstudioviewer
 
     # security work
     inputs.burpsuitepro.packages.${system}.default
@@ -70,6 +68,7 @@
     luarocks
 
     # Research software
+    zotero
     anydesk # Remote into server
 
     # debugging
