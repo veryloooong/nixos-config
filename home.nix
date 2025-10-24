@@ -137,10 +137,6 @@
       config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/config/rustfmt/rustfmt.toml";
     ".config/zellij/config.kdl".source =
       config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/config/zellij/config.kdl";
-    ".config/winapps/winapps.conf".source =
-      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/config/winapps/winapps.conf";
-    ".config/winapps/compose.yaml".source =
-      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/config/winapps/compose.yaml";
   };
 
   # === GAMING ===

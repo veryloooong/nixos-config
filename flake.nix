@@ -26,10 +26,10 @@
       # Optional but recommended to limit the size of your system closure.
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    winapps = {
-      url = "github:winapps-org/winapps";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # winapps = {
+    #   url = "github:winapps-org/winapps";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     nix-gaming.url = "github:fufexan/nix-gaming";
   };
 
@@ -41,7 +41,6 @@
       nix-flatpak,
       home-manager,
       lanzaboote,
-      winapps,
       ...
     }:
     let
@@ -83,7 +82,7 @@
 
       nixosConfigurations.lebobo = nixpkgs.lib.nixosSystem rec {
         specialArgs = {
-          inherit winapps system;
+          inherit system;
         };
         inherit system;
         modules = [

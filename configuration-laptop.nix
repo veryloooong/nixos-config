@@ -3,7 +3,6 @@
   pkgs,
   lib,
   system ? pkgs.system,
-  winapps,
   ...
 }:
 
@@ -30,6 +29,9 @@
   hardware.cpu.amd.updateMicrocode = true;
   services.fwupd.enable = true;
 
+  # SysRq
+  boot.kernel.sysctl."kernel.sysrq" = 502;
+
   # swap fix
   boot.resumeDevice = "/dev/disk/by-label/swap"; # Replace with your actual swap UUID
 
@@ -41,6 +43,9 @@
   services.libinput.enable = true;
 
   environment.systemPackages = with pkgs; [
+    # lmao
+    stm32cubemx
+
     # secure boot
     sbctl
 
@@ -65,8 +70,6 @@
     mmex
 
     # Virtualisation
-    winapps.packages."${system}".winapps
-    winapps.packages."${system}".winapps-launcher # optional
     distrobox
     podman-compose
     crun
