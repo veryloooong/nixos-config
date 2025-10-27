@@ -132,8 +132,8 @@ in
 
     # development
     git
-    sccache
     gnumake
+    mosquitto
 
     # productivity
     chromium
@@ -152,9 +152,6 @@ in
     corefonts
     microsoft-aptos
   ];
-
-  # Mosquitto MQTT broker
-  services.mosquitto.enable = true;
 
   # bindfs for theming
   system.fsPackages = [ pkgs.bindfs ];
