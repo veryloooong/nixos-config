@@ -128,6 +128,7 @@ in
     xsettingsd
     kdePackages.plasma-browser-integration
     kdePackages.filelight
+    zenity
 
     # development
     git
@@ -151,6 +152,9 @@ in
     corefonts
     microsoft-aptos
   ];
+
+  # Mosquitto MQTT broker
+  services.mosquitto.enable = true;
 
   # bindfs for theming
   system.fsPackages = [ pkgs.bindfs ];

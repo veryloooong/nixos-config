@@ -43,8 +43,9 @@
   services.libinput.enable = true;
 
   environment.systemPackages = with pkgs; [
-    # lmao
+    # development
     stm32cubemx
+    cmake
 
     # secure boot
     sbctl
