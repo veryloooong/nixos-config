@@ -94,7 +94,7 @@
         email = "hailong2004ptcnn@gmail.com";
         name = "Hải Long";
       };
-      aliases = {
+      alias = {
         co = "checkout";
         cam = "commit -am";
         pl = "pull";
