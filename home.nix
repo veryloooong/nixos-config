@@ -49,6 +49,7 @@
     teams-for-linux
     kdePackages.kdenlive
     pdfstudioviewer
+    plantuml-c4
 
     # security work
     inputs.burpsuitepro.packages.${system}.default

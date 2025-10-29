@@ -2,6 +2,8 @@
 
 let
   microsoft-aptos = pkgs.callPackage ./custom/aptos.nix { inherit pkgs; };
+  mi-sans = import ./custom/mi-sans.nix { inherit pkgs; };
+
   capacities = import ./custom/capacities.nix { inherit pkgs lib; };
 in
 {
@@ -150,6 +152,7 @@ in
     noto-fonts-cjk-sans
     corefonts
     microsoft-aptos
+    mi-sans
   ];
 
   # bindfs for theming
