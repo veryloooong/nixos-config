@@ -72,6 +72,7 @@
 
     # Virtualisation
     distrobox
+    fuse-overlayfs
     podman-compose
     crun
   ];

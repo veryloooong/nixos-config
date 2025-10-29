@@ -1,10 +1,10 @@
 { pkgs, lib, ... }: 
 let
   pname = "capacities";
-  version = "1.52.6";
+  version = "1.54.17";
   src = pkgs.fetchurl {
     url = "https://capacities-desktop-app.fra1.cdn.digitaloceanspaces.com/Capacities-${version}.AppImage";
-    hash = "sha256-M5K2TxrB2Ut/wYKasl8EqbzLjFJrqjWfPIJTZV4fi4s=";
+    hash = "sha256-5A+LrTX1pMSxJXX/I7gQGyZvZhf4Qb5M0sZnEcuP2EQ=";
   };
 
   appimageContents = pkgs.appimageTools.extractType1 { inherit pname version src; };

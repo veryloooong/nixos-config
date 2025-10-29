@@ -128,7 +128,6 @@ in
     xsettingsd
     kdePackages.plasma-browser-integration
     kdePackages.filelight
-    zenity
 
     # development
     git

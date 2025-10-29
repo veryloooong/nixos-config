@@ -89,33 +89,38 @@
   # Git and GitHub
   programs.git = {
     enable = true;
-    userEmail = "hailong2004ptcnn@gmail.com";
-    userName = "Hải Long";
-    delta = {
-      enable = true;
-      options = {
-        side-by-side = true;
-        line-numbers = true;
-        dark = true;
-        syntax-theme = "OneHalfDark";
+    settings = {
+      user = {
+        email = "hailong2004ptcnn@gmail.com";
+        name = "Hải Long";
       };
-    };
-    aliases = {
-      co = "checkout";
-      cam = "commit -am";
-      pl = "pull";
-      f = "fetch";
-      ph = "push";
-      aa = "add .";
-      a = "add";
-    };
-    extraConfig = {
+      aliases = {
+        co = "checkout";
+        cam = "commit -am";
+        pl = "pull";
+        f = "fetch";
+        ph = "push";
+        aa = "add .";
+        a = "add";
+      };
       init.defaultBranch = "main";
     };
   };
+
   programs.gh = {
     enable = true;
     gitCredentialHelper.enable = true;
+  };
+
+  programs.delta = {
+    enable = true;
+    options = {
+      side-by-side = true;
+      line-numbers = true;
+      dark = true;
+      syntax-theme = "OneHalfDark";
+    };
+    enableGitIntegration = true;
   };
 
   # VSCode
