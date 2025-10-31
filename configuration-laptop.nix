@@ -74,13 +74,6 @@
     fuse-overlayfs
     podman-compose
     crun
-
-    # Ghidra extensions
-    ghidra-extensions.wasm
-    ghidra-extensions.findcrypt
-    ghidra-extensions.ghidra-golanganalyzerextension
-    ghidra-extensions.machinelearning
-    ghidra-extensions.gnudisassembler
   ];
 
   # KDE Connect
@@ -106,11 +99,6 @@
       };
     };
   };
-
-  # Ghidra
-  programs.ghidra.enable = true;
-  programs.ghidra.gdb = true;
-
 
   # Gaming
   programs.gamescope.enable = true;

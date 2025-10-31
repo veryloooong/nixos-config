@@ -52,6 +52,7 @@
 
     # security work
     inputs.burpsuitepro.packages.${system}.default
+    wireshark
 
     # language servers
     nixd
@@ -66,6 +67,7 @@
     uv
     lua
     luarocks
+    openjdk
 
     # Research software
     zotero
