@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, options, ... }:
 
 let
   microsoft-aptos = pkgs.callPackage ./custom/aptos.nix { inherit pkgs; };
@@ -198,9 +198,7 @@ in
   # Enable nix-ld to run all binaries
   programs.nix-ld = {
     enable = true;
-    libraries = with pkgs; [
-      libxml2
-    ];
+    libraries = options.programs.nix-ld.libraries.default ++ (with pkgs; [  ]);
   };
 
   # Enable flatpaks

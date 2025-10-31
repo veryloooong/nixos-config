@@ -44,7 +44,6 @@
 
   environment.systemPackages = with pkgs; [
     # development
-    stm32cubemx
     cmake
 
     # secure boot
