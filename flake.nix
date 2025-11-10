@@ -11,9 +11,7 @@
     };
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     burpsuitepro = {
-      type = "github";
-      owner = "xiv3r";
-      repo = "Burpsuite-Professional";
+      url = "gitlab:_VX3r/burpsuite-pro-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zen-browser = {

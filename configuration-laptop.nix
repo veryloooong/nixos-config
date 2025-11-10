@@ -35,6 +35,8 @@
   # swap fix
   boot.resumeDevice = "/dev/disk/by-label/swap"; # Replace with your actual swap UUID
 
+  hardware.amdgpu.opencl.enable = true;
+
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
@@ -45,6 +47,7 @@
   environment.systemPackages = with pkgs; [
     # development
     cmake
+    serial-studio
 
     # secure boot
     sbctl
@@ -60,6 +63,7 @@
 
     # utility
     cheese # camera app
+    pocl
 
     # KDE
     kdePackages.plasma-vault # Encrypted folders

@@ -51,7 +51,7 @@
     pdfstudioviewer
 
     # security work
-    inputs.burpsuitepro.packages.${system}.default
+    inputs.burpsuitepro.packages.${system}.burpsuitepro
     wireshark
 
     # language servers
@@ -68,6 +68,7 @@
     lua
     luarocks
     openjdk
+    nodenv
 
     # Research software
     zotero
