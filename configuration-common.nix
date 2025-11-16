@@ -1,8 +1,15 @@
-{ config, pkgs, lib, options, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  options,
+  ...
+}:
 
 let
   microsoft-aptos = pkgs.callPackage ./custom/aptos.nix { inherit pkgs; };
   mi-sans = import ./custom/mi-sans.nix { inherit pkgs; };
+  sf-pro = import ./custom/sf-pro.nix { inherit pkgs; };
 
   capacities = import ./custom/capacities.nix { inherit pkgs lib; };
 in
@@ -153,6 +160,7 @@ in
     corefonts
     microsoft-aptos
     mi-sans
+    sf-pro
   ];
 
   # bindfs for theming
@@ -198,7 +206,7 @@ in
   # Enable nix-ld to run all binaries
   programs.nix-ld = {
     enable = true;
-    libraries = options.programs.nix-ld.libraries.default ++ (with pkgs; [  ]);
+    libraries = options.programs.nix-ld.libraries.default ++ (with pkgs; [ ]);
   };
 
   # Enable flatpaks
