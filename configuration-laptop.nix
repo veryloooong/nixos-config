@@ -62,13 +62,14 @@
     })
 
     # utility
-    cheese # camera app
     pocl
 
     # KDE
     kdePackages.plasma-vault # Encrypted folders
     kdePackages.kup # Backup
+    kdePackages.kamoso # Camera
     kdePackages.kcalc # Calculator
+    kdePackages.qtstyleplugin-kvantum
 
     # Financial management
     mmex
