@@ -133,7 +133,7 @@
     "image": "https://raw.githubusercontent.com/zen-browser/theme-store/main/themes/a6335949-4465-4b71-926c-4a52d34bc9c0/image.png",
     "author": "RobotoSkunk",
     "preferences": "https://raw.githubusercontent.com/zen-browser/theme-store/main/themes/a6335949-4465-4b71-926c-4a52d34bc9c0/preferences.json",
-    "version": "1.3.5",
+    "version": "1.5.0",
     "tags": [
       "find",
       "bar",
@@ -143,7 +143,7 @@
       "search-bar"
     ],
     "createdAt": "2024-11-24",
-    "updatedAt": "2025-09-18",
+    "updatedAt": "2025-11-16",
     "enabled": true
   },
   "ae051a40-3e3a-429a-a6f4-199a28b18a75": {
@@ -207,7 +207,7 @@
     "tags": [],
     "createdAt": "2025-03-06",
     "updatedAt": "2025-03-07",
-    "enabled": true
+    "enabled": false
   },
   "87196c08-8ca1-4848-b13b-7ea41ee830e7": {
     "id": "87196c08-8ca1-4848-b13b-7ea41ee830e7",
