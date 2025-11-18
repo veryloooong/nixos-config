@@ -2,7 +2,7 @@
   inputs,
   config,
   pkgs,
-  pkgs-softmaker,
+  # pkgs-softmaker,
   ...
 }:
 
@@ -37,11 +37,11 @@
     warp-terminal
 
     # productivity
+    freeoffice
     viber
     thunderbird
     onedrive
     onedrivegui
-    pkgs-softmaker.softmaker-office
     anki
     vscode-runner
     kdePackages.kolourpaint
@@ -49,6 +49,9 @@
     teams-for-linux
     kdePackages.kdenlive
     pdfstudioviewer
+
+    # remote
+    kdePackages.krdc
 
     # security work
     inputs.burpsuitepro.packages.${system}.burpsuitepro
@@ -72,7 +75,6 @@
 
     # Research software
     zotero
-    anydesk # Remote into server
 
     # debugging
     lldb # for rust
@@ -145,6 +147,8 @@
       config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/config/rustfmt/rustfmt.toml";
     ".config/zellij/config.kdl".source =
       config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/config/zellij/config.kdl";
+    ".config/winapps/compose.yaml".source = 
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/config/winapps/compose.yaml";
   };
 
   # === GAMING ===

@@ -15,7 +15,7 @@ services:
       # https://github.com/dockur/windows?tab=readme-ov-file#how-do-i-select-the-windows-version
       # https://github.com/dockur/windows?tab=readme-ov-file#how-do-i-install-a-custom-image
       VERSION: "11"
-      RAM_SIZE: "4G" # RAM allocated to the Windows VM.
+      RAM_SIZE: "6G" # RAM allocated to the Windows VM.
       CPU_CORES: "6" # CPU cores allocated to the Windows VM.
       DISK_SIZE: "80G" # Size of the primary hard disk.
       # DISK2_SIZE: "32G" # Uncomment to add an additional hard disk to the Windows VM. Ensure it is mounted as a volume below.
