@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    nixpkgs-softmaker.url = "github:nixos/nixpkgs/566e53c2ad750c84f6d31f9ccb9d00f823165550";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -20,15 +19,10 @@
     };
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.2";
-
-      # Optional but recommended to limit the size of your system closure.
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # winapps = {
-    #   url = "github:winapps-org/winapps";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
     nix-gaming.url = "github:fufexan/nix-gaming";
+    vicinae.url = "github:vicinaehq/vicinae";
   };
 
   outputs =
@@ -39,6 +33,7 @@
       nix-flatpak,
       home-manager,
       lanzaboote,
+      vicinae,
       ...
     }:
     let
@@ -61,10 +56,6 @@
           home-manager.users.veryloooong = import ./home.nix;
           home-manager.extraSpecialArgs = {
             inherit inputs;
-            pkgs-softmaker = import inputs.nixpkgs-softmaker {
-              inherit system;
-              config.allowUnfree = true;
-            };
           };
         }
       ];

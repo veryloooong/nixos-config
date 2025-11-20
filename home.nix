@@ -10,6 +10,7 @@
   imports = [
     ./modules/zsh.nix
     inputs.zen-browser.homeModules.twilight
+    inputs.vicinae.homeManagerModules.default
   ];
 
   programs.home-manager.enable = true;
@@ -206,6 +207,12 @@
   # zellij = tmux but noob
   programs.zellij = {
     enable = true;
+  };
+
+  # vicinae
+  services.vicinae = {
+    enable = true; # default: false
+    autoStart = true; # default: true
   };
 
   # do not touch
