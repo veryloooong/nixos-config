@@ -75,6 +75,7 @@ in
     fcitx5.addons = with pkgs; [
       fcitx5-rime
       kdePackages.fcitx5-unikey
+      fcitx5-bamboo
     ];
     fcitx5.waylandFrontend = true;
   };
