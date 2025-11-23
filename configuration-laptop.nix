@@ -139,11 +139,5 @@
 '';
   };
 
-  services.displayManager.sddm.settings = {
-    General = {
-      Font = "MiSans,12";
-    };
-  };
-
   system.stateVersion = "25.11"; # Did you read the comment?
 }

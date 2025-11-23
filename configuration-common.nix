@@ -140,6 +140,7 @@ in
     xsettingsd
     kdePackages.plasma-browser-integration
     kdePackages.filelight
+    kdePackages.sddm-kcm
 
     # development
     git
