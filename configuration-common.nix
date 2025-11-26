@@ -145,7 +145,7 @@ in
     # development
     git
     gnumake
-    mosquitto
+    sccache
 
     # productivity
     chromium

@@ -38,7 +38,7 @@
     warp-terminal
 
     # productivity
-    freeoffice
+    libreoffice
     viber
     thunderbird
     onedrive
