@@ -151,6 +151,8 @@
       config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/config/zellij/config.kdl";
     ".config/compose/windows.yaml".source = 
       config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/config/compose/windows.yaml";
+    ".config/compose/macos.yaml".source = 
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/config/compose/macos.yaml";
   };
 
   # === GAMING ===
