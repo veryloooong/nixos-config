@@ -36,6 +36,7 @@
     devenv
     unrar
     warp-terminal
+    python312
 
     # productivity
     libreoffice
@@ -148,8 +149,8 @@
       config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/config/rustfmt/rustfmt.toml";
     ".config/zellij/config.kdl".source =
       config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/config/zellij/config.kdl";
-    ".config/winapps/compose.yaml".source = 
-      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/config/winapps/compose.yaml";
+    ".config/compose/windows.yaml".source = 
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/config/compose/windows.yaml";
   };
 
   # === GAMING ===

@@ -121,6 +121,7 @@ in
     extraGroups = [
       "wheel"
       "libvirtd"
+      "dialout"
     ]; # sudo access
     shell = pkgs.zsh;
     useDefaultShell = true;
