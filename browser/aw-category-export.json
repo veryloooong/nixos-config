@@ -2,7 +2,7 @@
   "categories": [
     {
       "data": {
-        "color": "#0F0",
+        "color": "#D33115",
         "score": 10
       },
       "id": 0,
@@ -142,9 +142,7 @@
       "depth": 0
     },
     {
-      "data": {
-        "color": "#F80"
-      },
+      "data": {},
       "id": 8,
       "name": [
         "Media",
@@ -162,9 +160,7 @@
       "depth": 1
     },
     {
-      "data": {
-        "color": "#F33"
-      },
+      "data": {},
       "id": 9,
       "name": [
         "Media",
@@ -182,9 +178,7 @@
       "depth": 1
     },
     {
-      "data": {
-        "color": "#FCC400"
-      },
+      "data": {},
       "id": 10,
       "name": [
         "Media",
@@ -203,9 +197,7 @@
       "depth": 1
     },
     {
-      "data": {
-        "color": "#A8FC00"
-      },
+      "data": {},
       "id": 11,
       "name": [
         "Media",
@@ -213,7 +205,7 @@
       ],
       "rule": {
         "ignore_case": true,
-        "regex": "Spotify|Deezer",
+        "regex": "Spotify|Deezer|YouTube Music",
         "type": "regex"
       },
       "name_pretty": "Media>Music",
@@ -225,7 +217,7 @@
     },
     {
       "data": {
-        "color": "#9FF"
+        "color": "#E27300"
       },
       "id": 12,
       "name": [
@@ -328,7 +320,7 @@
     },
     {
       "data": {
-        "color": "#653294"
+        "color": "#333333"
       },
       "id": 18,
       "name": [
