@@ -50,6 +50,7 @@
     teams-for-linux
     kdePackages.kdenlive
     pdfstudioviewer
+    aw-qt
 
     # remote
     kdePackages.krdc
@@ -148,9 +149,9 @@
       config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/config/rustfmt/rustfmt.toml";
     ".config/zellij/config.kdl".source =
       config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/config/zellij/config.kdl";
-    ".config/compose/windows.yaml".source = 
+    ".config/compose/windows.yaml".source =
       config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/config/compose/windows.yaml";
-    ".config/compose/macos.yaml".source = 
+    ".config/compose/macos.yaml".source =
       config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/config/compose/macos.yaml";
   };
 
@@ -215,6 +216,22 @@
   services.vicinae = {
     enable = true; # default: false
     autoStart = true; # default: true
+  };
+
+  # activity tracker
+  services.activitywatch = {
+    enable = true;
+    watchers = {
+      awatcher = {
+        package = pkgs.awatcher;
+        executable = "awatcher";
+        settings = {
+          idle-timeout-seconds = 180;
+          poll-time-idle-seconds = 4;
+          poll-time-window-seconds = 1;
+        };
+      };
+    };
   };
 
   # do not touch
