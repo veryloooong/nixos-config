@@ -35,7 +35,6 @@
     p7zip
     devenv
     unrar
-    warp-terminal
     python312
 
     # productivity
