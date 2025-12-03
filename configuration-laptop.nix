@@ -48,7 +48,6 @@
     # development
     cmake
     serial-studio
-    arduino-ide
 
     # secure boot
     sbctl
