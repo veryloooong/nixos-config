@@ -224,7 +224,6 @@
     watchers = {
       awatcher = {
         package = pkgs.awatcher;
-        executable = "awatcher";
         settings = {
           idle-timeout-seconds = 180;
           poll-time-idle-seconds = 4;
