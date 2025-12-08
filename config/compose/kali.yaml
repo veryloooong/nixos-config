@@ -1,0 +1,23 @@
+volumes:
+  kali_data:
+services:
+  qemu:
+    image: qemux/qemu
+    container_name: kali
+    environment:
+      BOOT: "kali"
+      HOME: "${HOME}"
+    devices:
+      - /dev/kvm
+      - /dev/net/tun
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - 8006:8006
+    volumes:
+      - kali_data:/storage
+      - ${HOME}:/shared
+    restart: always
+    stop_grace_period: 2m
+    group-add:
+      - keep-groups
