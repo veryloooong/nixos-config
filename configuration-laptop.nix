@@ -116,13 +116,27 @@
   };
 
   # Virtualisation
-  virtualisation.containers.enable = true;
-  virtualisation.podman = {
-    enable = true;
-    dockerCompat = true;
-    defaultNetwork.settings.dns_enabled = true;
+  virtualisation = {
+    containers.enable = true;
+    oci-containers.backend = "podman";
+    podman = {
+      enable = true;
+      dockerCompat = true;
+      defaultNetwork.settings.dns_enabled = true;
+    };
+
+    containers.storage.settings = {
+      storage = {
+        driver = "overlay";
+        runroot = "/run/containers/storage";
+        graphroot = "/var/lib/containers/storage";
+        options.overlay = {
+          mount_program = "/run/current-system/sw/bin/fuse-overlayfs";
+        };
+      }; # storage
+    };
   };
-  virtualisation.vmware.host.enable = true;
+
   users.users.veryloooong.extraGroups = [ "podman" "kvm" ];
 
   environment.etc = {
