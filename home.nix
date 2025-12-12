@@ -155,6 +155,12 @@
       config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/config/compose/macos.yaml";
   };
 
+  # eclipse IDE
+  programs.eclipse = {
+    enable = true;
+    package = pkgs.eclipses.eclipse-java;
+  };
+
   # === GAMING ===
   programs.lutris = {
     enable = true;
