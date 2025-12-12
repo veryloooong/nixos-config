@@ -48,7 +48,6 @@
     # development
     cmake
     serial-studio
-    stm32cubemx
 
     # secure boot
     sbctl

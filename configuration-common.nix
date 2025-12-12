@@ -247,6 +247,7 @@ in
   # Open ports in the firewall
   networking.firewall.allowedTCPPorts = [
     22 # SSH
+    1883 # MQTT
   ];
 
   # mitmproxy cert
