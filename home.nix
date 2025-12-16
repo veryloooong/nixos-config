@@ -50,7 +50,7 @@
     teams-for-linux
     kdePackages.kdenlive
     pdfstudioviewer
-    aw-qt
+    zed-editor-fhs
 
     # remote
     kdePackages.krdc
@@ -131,10 +131,10 @@
   };
 
   # VSCode
-  programs.vscode = {
-    enable = true;
-    package = pkgs.vscode.fhs;
-  };
+  # programs.vscode = {
+  #   enable = true;
+  #   package = pkgs.vscode.fhs;
+  # };
 
   # direnv
   programs.direnv = {
@@ -216,21 +216,6 @@
   services.vicinae = {
     enable = true; # default: false
     autoStart = true; # default: true
-  };
-
-  # activity tracker
-  services.activitywatch = {
-    enable = true;
-    watchers = {
-      awatcher = {
-        package = pkgs.awatcher;
-        settings = {
-          idle-timeout-seconds = 180;
-          poll-time-idle-seconds = 4;
-          poll-time-window-seconds = 1;
-        };
-      };
-    };
   };
 
   # do not touch
