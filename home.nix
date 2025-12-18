@@ -63,6 +63,8 @@
     nixd
     clang-tools
     pyright
+    arduino-cli
+    arduino-language-server
 
     # formatters
     nixfmt-rfc-style
@@ -131,10 +133,10 @@
   };
 
   # VSCode
-  # programs.vscode = {
-  #   enable = true;
-  #   package = pkgs.vscode.fhs;
-  # };
+  programs.vscode = {
+    enable = true;
+    package = pkgs.vscode.fhs;
+  };
 
   # direnv
   programs.direnv = {
