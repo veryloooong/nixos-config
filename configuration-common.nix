@@ -125,8 +125,18 @@ in
     ]; # sudo access
     shell = pkgs.zsh;
     useDefaultShell = true;
-    subUidRanges = [{ startUid = 100000; count = 65536; }];
-    subGidRanges = [{ startGid = 100000; count = 65536; }];
+    subUidRanges = [
+      {
+        startUid = 100000;
+        count = 65536;
+      }
+    ];
+    subGidRanges = [
+      {
+        startGid = 100000;
+        count = 65536;
+      }
+    ];
   };
 
   # Allow unfree packages
@@ -162,7 +172,7 @@ in
     cascadia-code
     inter
     noto-fonts
-    noto-fonts-emoji
+    noto-fonts-color-emoji
     noto-fonts-cjk-sans
     corefonts
     microsoft-aptos
@@ -184,22 +194,50 @@ in
           "x-gvfs-hide"
         ];
       };
-      aggregated = pkgs.buildEnv {
-        name = "system-fonts-and-icons";
-        paths =
-          config.fonts.packages
-          ++ (with pkgs; [
-            bibata-cursors
-          ]);
+      fontsPkgs = config.fonts.packages ++ [
+        pkgs.kdePackages.breeze
+        pkgs.kdePackages.oxygen
+        pkgs.bibata-cursors
+      ];
+      x11Fonts =
+        pkgs.runCommand "X11-fonts"
+          {
+            preferLocalBuild = true;
+            nativeBuildInputs = with pkgs; [
+              gzip
+              xorg.mkfontscale
+              xorg.mkfontdir
+            ];
+          }
+          (
+            ''
+              mkdir -p "$out/share/fonts"
+              font_regexp='.*\.\(ttf\|ttc\|otb\|otf\|pcf\|pfa\|pfb\|bdf\)\(\.gz\)?'
+            ''
+            + (builtins.concatStringsSep "\n" (
+              builtins.map (pkg: ''
+                find ${toString pkg} -regex "$font_regexp" \
+                  -exec ln -sf -t "$out/share/fonts" '{}' \;
+              '') fontsPkgs
+            ))
+            + ''
+              cd "$out/share/fonts"
+              mkfontscale
+              mkfontdir
+              cat $(find ${pkgs.xorg.fontalias}/ -name fonts.alias) >fonts.alias
+            ''
+          );
+      aggregatedIcons = pkgs.buildEnv {
+        name = "system-icons";
+        paths = fontsPkgs;
         pathsToLink = [
-          "/share/fonts"
           "/share/icons"
         ];
       };
     in
     {
-      "/usr/share/fonts" = mkRoSymBind "${aggregated}/share/fonts";
-      "/usr/share/icons" = mkRoSymBind "${aggregated}/share/icons";
+      "/usr/share/icons" = mkRoSymBind (aggregatedIcons + "/share/icons");
+      "/usr/share/fonts" = mkRoSymBind (x11Fonts + "/share/fonts");
     };
 
   # Make Neovim the default editor even though I use VSCode because VIM is some unc type shi

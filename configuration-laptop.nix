@@ -65,7 +65,7 @@
     pocl
 
     # KDE
-    kdePackages.plasma-vault # Encrypted folders
+    # kdePackages.plasma-vault # Encrypted folders
     kdePackages.kup # Backup
     kdePackages.kamoso # Camera
     kdePackages.kcalc # Calculator
@@ -137,7 +137,10 @@
     };
   };
 
-  users.users.veryloooong.extraGroups = [ "podman" "kvm" ];
+  users.users.veryloooong.extraGroups = [
+    "podman"
+    "kvm"
+  ];
 
   environment.etc = {
     "ovmf/edk2-x86_64-secure-code.fd" = {
@@ -149,8 +152,8 @@
     };
 
     "distrobox/distrobox.conf".text = ''
-  container_additional_volumes="/nix/store:/nix/store:ro /etc/profiles/per-user:/etc/profiles/per-user:ro /etc/static/profiles/per-user:/etc/static/profiles/per-user:ro"
-'';
+      container_additional_volumes="/nix/store:/nix/store:ro /etc/profiles/per-user:/etc/profiles/per-user:ro /etc/static/profiles/per-user:/etc/static/profiles/per-user:ro"
+    '';
   };
 
   system.stateVersion = "25.11"; # Did you read the comment?
