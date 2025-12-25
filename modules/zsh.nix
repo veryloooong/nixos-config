@@ -16,6 +16,7 @@
     shellAliases = {
       ls = "eza";
       cat = "bat";
+      open = "xdg-open";
       system-update = "sudo nixos-rebuild switch";
       code-pwd = "code . --ozone-platform-hint=auto --enable-wayland-ime";
     };
