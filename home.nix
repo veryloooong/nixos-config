@@ -50,7 +50,7 @@
     teams-for-linux
     kdePackages.kdenlive
     pdfstudioviewer
-    zed-editor-fhs
+    lmstudio
 
     # remote
     kdePackages.krdc
@@ -136,6 +136,16 @@
   programs.vscode = {
     enable = true;
     package = pkgs.vscode.fhs;
+  };
+
+  programs.zed-editor = {
+    enable = true;
+    package = pkgs.zed-editor.fhsWithPackages(
+      o: with o; [
+        openssl
+        zlib
+      ]
+    );
   };
 
   # direnv
