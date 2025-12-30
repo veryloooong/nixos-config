@@ -39,7 +39,6 @@
 
     # productivity
     libreoffice
-    viber
     thunderbird
     onedrive
     onedrivegui
@@ -51,6 +50,7 @@
     kdePackages.kdenlive
     pdfstudioviewer
     lmstudio
+    zettlr
 
     # remote
     kdePackages.krdc

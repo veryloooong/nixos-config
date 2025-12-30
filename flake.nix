@@ -70,9 +70,6 @@
       };
 
       nixosConfigurations.lebobo = nixpkgs.lib.nixosSystem rec {
-        specialArgs = {
-          inherit system;
-        };
         inherit system;
         modules = [
           ./configuration-laptop.nix
