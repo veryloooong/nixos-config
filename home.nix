@@ -50,7 +50,6 @@
     kdePackages.kdenlive
     pdfstudioviewer
     lmstudio
-    zettlr
 
     # remote
     kdePackages.krdc
@@ -138,6 +137,7 @@
     package = pkgs.vscode.fhs;
   };
 
+  # Zed
   programs.zed-editor = {
     enable = true;
     package = pkgs.zed-editor.fhsWithPackages(
@@ -227,8 +227,14 @@
   # vicinae
   services.vicinae = {
     enable = true; # default: false
-    autoStart = true; # default: true
+    systemd = {
+      enable = true;
+      autoStart = true; # default: false
+    };
   };
+
+  # obsidian
+  programs.obsidian.enable = true;
 
   # do not touch
   home.stateVersion = "25.11";
