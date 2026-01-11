@@ -20,7 +20,6 @@
     "app.twintaillauncher.ttl"
     "org.vinegarhq.Sober"
     "com.bishwasaha.Koncentro"
-    "com.zettlr.Zettlr"
     { appId = "com.stremio.Stremio"; origin = "flathub-beta"; }
   ];
 }

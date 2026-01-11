@@ -50,6 +50,7 @@
     kdePackages.kdenlive
     pdfstudioviewer
     lmstudio
+    obsidian
 
     # remote
     kdePackages.krdc
@@ -232,9 +233,6 @@
       autoStart = true; # default: false
     };
   };
-
-  # obsidian
-  programs.obsidian.enable = true;
 
   # do not touch
   home.stateVersion = "25.11";
