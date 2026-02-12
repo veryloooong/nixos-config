@@ -63,7 +63,7 @@
     pyright
 
     # formatters
-    nixfmt-rfc-style
+    nixfmt
     ruff
 
     # runtimes
