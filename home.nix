@@ -54,7 +54,7 @@
     kdePackages.krdc
 
     # security work
-    inputs.burpsuitepro.packages.${system}.burpsuitepro
+    inputs.burpsuitepro.packages.${stdenv.hostPlatform.system}.burpsuitepro
     wireshark
 
     # language servers
@@ -86,7 +86,7 @@
     vlc
 
     # wine
-    inputs.nix-gaming.packages.${pkgs.system}.wine-ge
+    inputs.nix-gaming.packages.${pkgs.stdenv.hostPlatform.system}.wine-ge
   ];
 
   # === DEVELOPMENT ===
