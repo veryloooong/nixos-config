@@ -35,7 +35,6 @@
     p7zip
     devenv
     unrar
-    python312
 
     # productivity
     libreoffice
@@ -49,7 +48,6 @@
     teams-for-linux
     kdePackages.kdenlive
     pdfstudioviewer
-    lmstudio
     obsidian
 
     # remote
@@ -63,8 +61,6 @@
     nixd
     clang-tools
     pyright
-    arduino-cli
-    arduino-language-server
 
     # formatters
     nixfmt-rfc-style

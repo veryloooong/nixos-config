@@ -205,8 +205,7 @@ in
             preferLocalBuild = true;
             nativeBuildInputs = with pkgs; [
               gzip
-              xorg.mkfontscale
-              xorg.mkfontdir
+              mkfontscale
             ];
           }
           (
@@ -224,7 +223,7 @@ in
               cd "$out/share/fonts"
               mkfontscale
               mkfontdir
-              cat $(find ${pkgs.xorg.fontalias}/ -name fonts.alias) >fonts.alias
+              cat $(find ${pkgs.font-alias}/ -name fonts.alias) >fonts.alias
             ''
           );
       aggregatedIcons = pkgs.buildEnv {
