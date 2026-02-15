@@ -49,6 +49,7 @@
     kdePackages.kdenlive
     pdfstudioviewer
     obsidian
+    kdePackages.krecorder
 
     # remote
     kdePackages.krdc
