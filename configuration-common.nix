@@ -152,6 +152,7 @@ in
     wl-clipboard
     xsettingsd
     kdePackages.plasma-browser-integration
+    kdePackages.plasma-workspace
     kdePackages.filelight
     kdePackages.sddm-kcm
 

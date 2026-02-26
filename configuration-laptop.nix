@@ -118,6 +118,7 @@
   # Virtualisation
   virtualisation = {
     containers.enable = true;
+    vmware.host.enable = true;
     oci-containers.backend = "podman";
     podman = {
       enable = true;
