@@ -50,6 +50,7 @@
     pdfstudioviewer
     obsidian
     kdePackages.krecorder
+    telegram-desktop
 
     # remote
     kdePackages.krdc
