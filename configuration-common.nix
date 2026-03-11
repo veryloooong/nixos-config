@@ -282,6 +282,12 @@ in
   # Enable the OpenSSH daemon
   services.openssh.enable = true;
 
+  # Enable Tailscale
+  services.tailscale = {
+    enable = true;
+    useRoutingFeatures = "both";
+  };
+
   # Open ports in the firewall
   networking.firewall.allowedTCPPorts = [
     22 # SSH
