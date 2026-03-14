@@ -51,6 +51,7 @@
     obsidian
     kdePackages.krecorder
     telegram-desktop
+    drawio
 
     # remote
     kdePackages.krdc
