@@ -52,6 +52,7 @@
     kdePackages.krecorder
     telegram-desktop
     drawio
+    viber
 
     # remote
     kdePackages.krdc

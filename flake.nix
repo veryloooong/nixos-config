@@ -23,6 +23,7 @@
     };
     nix-gaming.url = "github:fufexan/nix-gaming";
     vicinae.url = "github:vicinaehq/vicinae";
+    vnkey.url = "github:marixdev/vnkey";
   };
 
   outputs =
@@ -34,6 +35,7 @@
       home-manager,
       lanzaboote,
       vicinae,
+      vnkey,
       ...
     }:
     let
@@ -63,6 +65,7 @@
     {
       nixosConfigurations.nixos-vm = nixpkgs.lib.nixosSystem {
         inherit system;
+        specialArgs = { inherit inputs; };
         modules = [
           ./configuration-vm.nix
         ]
@@ -71,6 +74,7 @@
 
       nixosConfigurations.lebobo = nixpkgs.lib.nixosSystem rec {
         inherit system;
+        specialArgs = { inherit inputs; };
         modules = [
           ./configuration-laptop.nix
           lanzaboote.nixosModules.lanzaboote
