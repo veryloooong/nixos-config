@@ -77,7 +77,6 @@ in
       fcitx5-rime
       kdePackages.fcitx5-unikey
       fcitx5-bamboo
-      # inputs.vnkey.packages.${pkgs.system}.vnkey-fcitx5
     ];
     fcitx5.waylandFrontend = true;
   };

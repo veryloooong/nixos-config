@@ -1,3 +1,5 @@
+flake-overlays:
+
 {
   config,
   pkgs,
@@ -11,6 +13,14 @@
     # Include the results of the hardware scan.
     ./hardware-configuration-laptop.nix
   ];
+
+  nixpkgs.overlays = [
+    (
+      final: prev: {
+        # Your own overlays...
+      }
+    )
+  ] ++ flake-overlays;
 
   # Bootloader and boot screen
   # boot.loader.systemd-boot.enable = true;
@@ -48,6 +58,7 @@
     # development
     cmake
     serial-studio
+    matlab
 
     # secure boot
     sbctl

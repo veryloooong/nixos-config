@@ -21,9 +21,12 @@
       url = "github:nix-community/lanzaboote/v1.0.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-matlab = {
+      url = "gitlab:doronbehar/nix-matlab";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-gaming.url = "github:fufexan/nix-gaming";
     vicinae.url = "github:vicinaehq/vicinae";
-    vnkey.url = "github:marixdev/vnkey";
   };
 
   outputs =
@@ -34,8 +37,8 @@
       nix-flatpak,
       home-manager,
       lanzaboote,
+      nix-matlab,
       vicinae,
-      vnkey,
       ...
     }:
     let
@@ -61,6 +64,9 @@
           };
         }
       ];
+      flake-overlays = [
+        nix-matlab.overlay
+      ];
     in
     {
       nixosConfigurations.nixos-vm = nixpkgs.lib.nixosSystem {
@@ -76,9 +82,8 @@
         inherit system;
         specialArgs = { inherit inputs; };
         modules = [
-          ./configuration-laptop.nix
+          (import ./configuration-laptop.nix flake-overlays)
           lanzaboote.nixosModules.lanzaboote
-
         ]
         ++ common-modules;
       };
