@@ -71,9 +71,6 @@
     kdePackages.kcalc # Calculator
     kdePackages.qtstyleplugin-kvantum
 
-    # Financial management
-    mmex
-
     # Virtualisation
     distrobox
     fuse-overlayfs

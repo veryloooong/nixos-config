@@ -52,6 +52,8 @@ in
   # Enable networking
   networking.networkmanager.enable = true;
 
+  services.cloudflare-warp.enable = true;
+
   # Time and locale
   time.timeZone = "Asia/Ho_Chi_Minh";
   i18n.defaultLocale = "en_GB.UTF-8";
