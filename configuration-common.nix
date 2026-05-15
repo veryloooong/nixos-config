@@ -13,6 +13,14 @@ let
   sf-pro = import ./custom/sf-pro.nix { inherit pkgs; };
 in
 {
+  nixpkgs.overlays = [
+    (final: prev: {
+      openldap = prev.openldap.overrideAttrs (oldAttrs: {
+        doCheck = false;
+      });
+    })
+  ];
+
   # Enable flakes and the new Nix CLI
   nix.settings.experimental-features = [
     "nix-command"
