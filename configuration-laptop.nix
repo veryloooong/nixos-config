@@ -57,7 +57,6 @@ flake-overlays:
   environment.systemPackages = with pkgs; [
     # development
     cmake
-    serial-studio
     matlab
 
     # secure boot

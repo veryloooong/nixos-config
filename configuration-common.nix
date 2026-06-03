@@ -164,6 +164,7 @@ in
     kdePackages.plasma-workspace
     kdePackages.filelight
     kdePackages.sddm-kcm
+    kdePackages.krdp
 
     # development
     git
@@ -299,7 +300,6 @@ in
   # Open ports in the firewall
   networking.firewall.allowedTCPPorts = [
     22 # SSH
-    1883 # MQTT
   ];
 
   # mitmproxy cert
