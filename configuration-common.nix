@@ -286,6 +286,15 @@ in
   environment.variables = {
     EDITOR = "nvim";
     RUSTC_WRAPPER = "sccache";
+
+    # Claude Code → DeepSeek's Anthropic-compatible API
+    ANTHROPIC_BASE_URL = "https://api.deepseek.com/anthropic";
+    ANTHROPIC_MODEL = "deepseek-v4-pro[1m]";
+    ANTHROPIC_DEFAULT_OPUS_MODEL = "deepseek-v4-pro[1m]";
+    ANTHROPIC_DEFAULT_SONNET_MODEL = "deepseek-v4-pro[1m]";
+    ANTHROPIC_DEFAULT_HAIKU_MODEL = "deepseek-v4-flash";
+    CLAUDE_CODE_SUBAGENT_MODEL = "deepseek-v4-flash";
+    CLAUDE_CODE_EFFORT_LEVEL = "max";
   };
 
   # Enable the OpenSSH daemon
@@ -307,4 +316,22 @@ in
 
   # do not touch
   system.stateVersion = "25.11"; # Did you read the comment?
+
+  # === SECRETS MANAGEMENT (sops-nix, system level) ===
+  # Decrypts secrets at boot/switch time into /run/secrets/
+  # See: https://michael.stapelberg.ch/posts/2025-08-24-secret-management-with-sops-nix/
+  sops = {
+    age.keyFile = "/home/veryloooong/.config/sops/age/keys.txt";
+    defaultSopsFile = ./secrets/claude-code.yaml;
+
+    # Declare the secret so sops-nix knows which key to extract from the YAML file
+    secrets."deepseek-api-key" = { };
+
+    # Template: write the decrypted API key into the user's home directory
+    templates."deepseek-api-key" = {
+      content = "${config.sops.placeholder.deepseek-api-key}";
+      path = "/home/veryloooong/.config/claude-code/api-key";
+      owner = config.users.users.veryloooong.name;
+    };
+  };
 }

@@ -17,8 +17,6 @@
       ls = "eza";
       cat = "bat";
       open = "xdg-open";
-      system-update = "sudo nixos-rebuild switch";
-      code-pwd = "code . --ozone-platform-hint=auto --enable-wayland-ime";
     };
 
     # history
@@ -49,6 +47,11 @@
       zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"
 
       eval "$(nodenv init - zsh)"
+
+      # Claude Code: API key decrypted by sops-nix at boot
+      if [ -f ~/.config/claude-code/api-key ]; then
+        export ANTHROPIC_AUTH_TOKEN="$(cat ~/.config/claude-code/api-key)"
+      fi
     '';
   };
 

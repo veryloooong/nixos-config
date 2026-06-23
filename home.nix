@@ -11,6 +11,7 @@
     ./modules/zsh.nix
     inputs.zen-browser.homeModules.twilight
     inputs.vicinae.homeManagerModules.default
+    inputs.sops-nix.homeManagerModules.sops
   ];
 
   programs.home-manager.enable = true;
@@ -69,6 +70,9 @@
     # formatters
     nixfmt
     ruff
+
+    # AI & coding assistants
+    claude-code
 
     # runtimes
     uv
@@ -141,7 +145,7 @@
   # Zed
   programs.zed-editor = {
     enable = true;
-    package = pkgs.zed-editor.fhsWithPackages(
+    package = pkgs.zed-editor.fhsWithPackages (
       o: with o; [
         openssl
         zlib

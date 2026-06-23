@@ -27,6 +27,10 @@
     };
     nix-gaming.url = "github:fufexan/nix-gaming";
     vicinae.url = "github:vicinaehq/vicinae";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -39,6 +43,7 @@
       lanzaboote,
       nix-matlab,
       vicinae,
+      sops-nix,
       ...
     }:
     let
@@ -48,6 +53,9 @@
 
         # Determinate has garbage collection + Flakehub search
         determinate.nixosModules.default
+
+        # sops-nix for secrets management
+        sops-nix.nixosModules.sops
 
         # flatpaks
         nix-flatpak.nixosModules.nix-flatpak
