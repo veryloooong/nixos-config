@@ -142,17 +142,6 @@
     package = pkgs.vscode.fhs;
   };
 
-  # Zed
-  programs.zed-editor = {
-    enable = true;
-    package = pkgs.zed-editor.fhsWithPackages (
-      o: with o; [
-        openssl
-        zlib
-      ]
-    );
-  };
-
   # direnv
   programs.direnv = {
     enable = true;
