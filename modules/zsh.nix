@@ -48,6 +48,8 @@
 
       eval "$(nodenv init - zsh)"
 
+      eval "$(devenv hook zsh)"
+
       # Claude Code: API key decrypted by sops-nix at boot
       if [ -f ~/.config/claude-code/api-key ]; then
         export ANTHROPIC_AUTH_TOKEN="$(cat ~/.config/claude-code/api-key)"
