@@ -42,6 +42,8 @@ in
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc="
     ];
+    cores = 4;
+    max-jobs = 4;
   };
 
   # Enable GC
@@ -295,6 +297,10 @@ in
     ANTHROPIC_DEFAULT_HAIKU_MODEL = "deepseek-v4-flash";
     CLAUDE_CODE_SUBAGENT_MODEL = "deepseek-v4-flash";
     CLAUDE_CODE_EFFORT_LEVEL = "max";
+
+    # devenv
+    DEVENV_MAX_JOBS = 2;
+    DEVENV_CORES = 4;
   };
 
   # Enable the OpenSSH daemon
