@@ -262,7 +262,11 @@ in
   # Enable nix-ld to run all binaries
   programs.nix-ld = {
     enable = true;
-    libraries = options.programs.nix-ld.libraries.default ++ (with pkgs; [ ]);
+    libraries = options.programs.nix-ld.libraries.default ++ (with pkgs; [ 
+      libxcrypt
+      libxcrypt-legacy
+      coreutils
+    ]);
   };
 
   # Enable flatpaks

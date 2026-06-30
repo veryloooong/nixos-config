@@ -4,9 +4,6 @@
   programs.zsh = {
     enable = true;
 
-    # emacs binding
-    defaultKeymap = "emacs";
-
     # main plugins
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
