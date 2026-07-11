@@ -12,23 +12,15 @@ One Git repo for NixOS configs for both my VMs and my laptop
 ## Setup (fresh NixOS install)
 
 ```sh
-# 1. Clone to ~/nix
-git clone https://github.com/veryloooong/nixos-config ~/nix
+# 1. Restore your SSH key (~/.ssh/id_ed25519) — the age key is derived from it
+mkdir -p ~/.config/sops/age
+read -s SSH_TO_AGE_PASSPHRASE; export SSH_TO_AGE_PASSPHRASE
+nix shell nixpkgs#ssh-to-age -c ssh-to-age \
+  -private-key -i ~/.ssh/id_ed25519 \
+  -o ~/.config/sops/age/keys.txt
 
-# 2. Restore your age key for sops decryption
-#    Option A: copy from old machine
-#      scp old-laptop:~/.config/sops/age/keys.txt ~/.config/sops/age/keys.txt
-#
-#    Option B: regenerate from your SSH key (if you used ssh-to-age)
-#      nix shell nixpkgs#ssh-to-age -c ssh-to-age \
-#        -private-key -i ~/.ssh/id_ed25519 -o ~/.config/sops/age/keys.txt
-#
-#    Option C: generate a new key, then re-encrypt secrets
-#      nix shell nixpkgs#age -c age-keygen -o ~/.config/sops/age/keys.txt
-#      cat ~/.config/sops/age/keys.txt | grep "public key" | cut -d' ' -f4
-#      # → Add this public key to .sops.yaml, then on a machine with the old key:
-#      cd ~/nix && sops updatekeys secrets/claude-code.yaml
-#      git push && git pull  # on new laptop
+# 2. Clone to ~/nix
+git clone https://github.com/veryloooong/nixos-config ~/nix
 
 # 3. Symlink to /etc/nixos
 sudo ln -s ~/nix /etc/nixos

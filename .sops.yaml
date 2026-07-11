@@ -1,25 +1,30 @@
 # sops configuration for this repository
 # See: https://github.com/Mic92/sops-nix
 #
-# DeepSeek provides an Anthropic-compatible API at https://api.deepseek.com/anthropic
-# No translation layer (claude-code-router) needed — Claude Code talks directly to it.
+# SSH-based: derive age key from your SSH key so you only back up ~/.ssh.
+#   Regenerate anytime: ssh-to-age -private-key -i ~/.ssh/id_ed25519 \
+#     -o ~/.config/sops/age/keys.txt
 
 creation_rules:
-  # Encrypt all .yaml files under secrets/ with your age public key
-  # To add a new machine: add its public key below, then run:
-  #   sops updatekeys secrets/claude-code.yaml
   - path_regex: secrets/.*\.yaml$
     age: >-
-      age19q67d23zfzpx5hs0k4ff0nlwan52rzgff2sfqqp33hz2r0n6w9ssu6n5xr
+      age1hpr5408nn02tfwh4cuv5l6y8hmvkhvyzy54thwa27d8mmykx39ns9f4qd2
 
-# === New machine recovery ===
-# You MUST have your age private key to decrypt secrets. Back it up!
-#   ~/.config/sops/age/keys.txt
-# Better: derive it from your SSH key so you only need to back up ~/.ssh:
-#   nix shell nixpkgs#ssh-to-age -c ssh-to-age -private-key -i ~/.ssh/id_ed25519 -o ~/.config/sops/age/keys.txt
+# === Recovery (new machine) ===
+# 1. Restore your SSH key (~/.ssh/id_ed25519) to the new machine
+# 2. Regenerate the age key from it:
+#      read -s SSH_TO_AGE_PASSPHRASE; export SSH_TO_AGE_PASSPHRASE
+#      nix shell nixpkgs#ssh-toage -c ssh-to-age \
+#        -private-key -i ~/.ssh/id_ed25519 \
+#        -o ~/.config/sops/age/keys.txt
+# 3. Clone repo, symlink, rebuild — no manual key management needed
 #
-# To add a new machine's key:
-#   1. On the new machine: cat ~/.config/sops/age/keys.txt | grep public | cut -d' ' -f4
-#   2. Add that public key to the `age:` list above
-#   3. From a machine that already has a key: sops updatekeys secrets/claude-code.yaml
-#   4. git commit && git push, then git pull on the new machine
+# === Adding a second machine ===
+# 1. On new machine, get its public key:
+#      age-keygen -y ~/.config/sops/age/keys.txt
+# 2. Add it here alongside the existing one (comma-separated):
+#      age: >-
+#        EXISTING_KEY,
+#        NEW_KEY
+# 3. Re-encrypt for both: sops updatekeys secrets/claude-code.yaml
+# 4. Git commit, push, pull on the new machine

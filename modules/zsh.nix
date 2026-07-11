@@ -50,6 +50,7 @@
       # Claude Code: API key decrypted by sops-nix at boot
       if [ -f ~/.config/claude-code/api-key ]; then
         export ANTHROPIC_AUTH_TOKEN="$(cat ~/.config/claude-code/api-key)"
+        export DEEPSEEK_API_KEY="$(cat ~/.config/claude-code/api-key)"
       fi
     '';
   };
