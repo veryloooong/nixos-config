@@ -316,6 +316,12 @@ in
     useRoutingFeatures = "both";
   };
 
+  # Enable Clash Verge
+  programs.clash-verge = {
+    enable = true;
+    serviceMode = true;
+  };
+
   # Open ports in the firewall
   networking.firewall.allowedTCPPorts = [
     22 # SSH
