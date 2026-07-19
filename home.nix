@@ -31,11 +31,11 @@
     android-tools # adb and others
     yt-dlp
     ffmpeg
-    hyperfine
     dust
     p7zip
     devenv
     unrar
+    typst
 
     # productivity
     libreoffice
@@ -46,14 +46,12 @@
     vscode-runner
     kdePackages.kolourpaint
     xournalpp
-    teams-for-linux
     kdePackages.kdenlive
     pdfstudioviewer
     obsidian
     kdePackages.krecorder
     telegram-desktop
     drawio
-    viber
 
     # remote
     kdePackages.krdc
@@ -72,7 +70,6 @@
     ruff
 
     # AI & coding assistants
-    claude-code
     opencode
 
     # runtimes
@@ -81,6 +78,7 @@
     luarocks
     openjdk
     nodenv
+    bun
 
     # Research software
     zotero
