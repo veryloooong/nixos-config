@@ -73,6 +73,7 @@
 
     # AI & coding assistants
     claude-code
+    opencode
 
     # runtimes
     uv
