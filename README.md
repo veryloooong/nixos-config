@@ -32,3 +32,47 @@ sudo ln -s ~/nix /etc/nixos
 # 5. Rebuild
 sudo nixos-rebuild switch
 ```
+
+## Secrets (sops-nix)
+
+This repo uses [sops-nix](https://github.com/Mic92/sops-nix) to encrypt secrets so they can be safely committed to Git.
+
+### First-time setup
+
+```sh
+# Paste your DeepSeek API key into the encrypted file:
+cd ~/nix
+nix shell nixpkgs#sops -c sops secrets/claude-code.yaml
+# In the editor:  deepseek-api-key: sk-your-key-here
+# Save & exit — sops encrypts it automatically.
+
+# Rebuild to deploy:
+sudo nixos-rebuild switch
+```
+
+### View/edit secrets later
+
+```sh
+cd ~/nix && nix shell nixpkgs#sops -c sops secrets/claude-code.yaml
+```
+
+### How it works
+
+| Component         | What                                             | Managed by                                                            |
+| ----------------- | ------------------------------------------------ | --------------------------------------------------------------------- |
+| Age key           | `~/.config/sops/age/keys.txt`                    | Derived from `~/.ssh/id_ed25519` via `ssh-to-age`                     |
+| Encrypted file    | `secrets/claude-code.yaml`                       | Committed to Git, holds `deepseek-api-key`                            |
+| System decryption | `configuration-common.nix` sops block            | Extracts key at build time, writes to `~/.config/claude-code/api-key` |
+| Shell env         | `modules/zsh.nix` initContent                    | Reads the file and exports `ANTHROPIC_AUTH_TOKEN`                     |
+| System env vars   | `configuration-common.nix` environment.variables | `ANTHROPIC_BASE_URL`, model names, etc.                               |
+
+### Claude Code → DeepSeek
+
+Claude Code talks directly to [DeepSeek's Anthropic-compatible API](https://api-docs.deepseek.com/quick_start/agent_integrations/claude_code) at `https://api.deepseek.com/anthropic`. No translation layer needed.
+
+Model mapping:
+| Claude model | Maps to DeepSeek |
+|---|---|
+| Opus | `deepseek-v4-pro` |
+| Sonnet | `deepseek-v4-pro` |
+| Haiku | `deepseek-v4-flash` |
