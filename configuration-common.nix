@@ -320,12 +320,21 @@ in
   programs.clash-verge = {
     enable = true;
     serviceMode = true;
+    tunMode = true;
+    autoStart = true;
   };
 
   # Open ports in the firewall
-  networking.firewall.allowedTCPPorts = [
-    22 # SSH
-  ];
+  networking.nftables.enable = true;
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 22 8090 ];
+    allowedUDPPorts = [ 8090 ];
+    trustedInterfaces = [
+      "Mihomo"
+    ];
+    extraReversePathFilterRules = ''iifname { "Mihomo" } accept comment "trusted interface"'';
+  };
 
   # mitmproxy cert
   security.pki.certificates = [ (builtins.readFile ./browser/mitmproxy-ca-cert.pem) ];
