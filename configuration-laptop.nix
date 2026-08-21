@@ -57,7 +57,6 @@ flake-overlays:
   environment.systemPackages = with pkgs; [
     # development
     cmake
-    matlab
 
     # secure boot
     sbctl

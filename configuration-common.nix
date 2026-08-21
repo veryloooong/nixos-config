@@ -316,14 +316,6 @@ in
     useRoutingFeatures = "both";
   };
 
-  # Enable Clash Verge
-  programs.clash-verge = {
-    enable = true;
-    serviceMode = true;
-    tunMode = true;
-    autoStart = true;
-  };
-
   # Open ports in the firewall
   networking.nftables.enable = true;
   networking.firewall = {

@@ -218,7 +218,7 @@
   };
 
   # vicinae
-  services.vicinae = {
+  programs.vicinae = {
     enable = true; # default: false
     systemd = {
       enable = true;

@@ -21,10 +21,6 @@
       url = "github:nix-community/lanzaboote/v1.1.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-matlab = {
-      url = "gitlab:doronbehar/nix-matlab";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nix-gaming.url = "github:fufexan/nix-gaming";
     vicinae.url = "github:vicinaehq/vicinae";
     sops-nix = {
@@ -41,7 +37,6 @@
       nix-flatpak,
       home-manager,
       lanzaboote,
-      nix-matlab,
       vicinae,
       sops-nix,
       ...
@@ -73,7 +68,6 @@
         }
       ];
       flake-overlays = [
-        nix-matlab.overlay
       ];
     in
     {
