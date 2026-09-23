@@ -166,7 +166,6 @@ in
     kdePackages.plasma-workspace
     kdePackages.filelight
     kdePackages.sddm-kcm
-    kdePackages.krdp
 
     # development
     git

@@ -29,19 +29,15 @@
     # shell
     hexyl
     android-tools # adb and others
-    yt-dlp
     ffmpeg
     dust
     p7zip
     devenv
     unrar
-    typst
 
     # productivity
     libreoffice
     thunderbird
-    onedrive
-    onedrivegui
     anki
     vscode-runner
     kdePackages.kolourpaint
@@ -50,14 +46,12 @@
     pdfstudioviewer
     obsidian
     kdePackages.krecorder
-    telegram-desktop
-    drawio
+    officecli
 
     # remote
     kdePackages.krdc
 
     # security work
-    inputs.burpsuitepro.packages.${stdenv.hostPlatform.system}.burpsuitepro
     wireshark
 
     # language servers
@@ -68,9 +62,6 @@
     # formatters
     nixfmt
     ruff
-
-    # AI & coding assistants
-    opencode
 
     # runtimes
     uv

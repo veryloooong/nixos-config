@@ -17,9 +17,7 @@
 
   services.flatpak.packages = [
     "com.usebottles.bottles"
-    "app.twintaillauncher.ttl"
     "org.vinegarhq.Sober"
     "com.bishwasaha.Koncentro"
-    { appId = "com.stremio.Stremio"; origin = "flathub-beta"; }
   ];
 }

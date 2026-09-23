@@ -74,14 +74,12 @@ flake-overlays:
     pocl
 
     # KDE
-    # kdePackages.plasma-vault # Encrypted folders
     kdePackages.kup # Backup
     kdePackages.kamoso # Camera
     kdePackages.kcalc # Calculator
     kdePackages.qtstyleplugin-kvantum
 
     # Virtualisation
-    distrobox
     fuse-overlayfs
     podman-compose
     crun
