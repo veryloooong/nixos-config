@@ -83,6 +83,7 @@ flake-overlays:
     fuse-overlayfs
     podman-compose
     crun
+    vagrant
   ];
 
   # KDE Connect
@@ -122,14 +123,12 @@ flake-overlays:
   # Virtualisation
   virtualisation = {
     containers.enable = true;
-    vmware.host.enable = true;
     oci-containers.backend = "podman";
     podman = {
       enable = true;
       dockerCompat = true;
       defaultNetwork.settings.dns_enabled = true;
     };
-
     containers.storage.settings = {
       storage = {
         driver = "overlay";
@@ -140,12 +139,17 @@ flake-overlays:
         };
       }; # storage
     };
+
+    # VirtualBox
+    virtualbox.host.enable = true;
+    virtualbox.host.enableExtensionPack = true;
   };
 
   users.users.veryloooong.extraGroups = [
     "podman"
     "kvm"
   ];
+  users.extraGroups.vboxusers.members = [ "veryloooong" ];
 
   environment.etc = {
     "ovmf/edk2-x86_64-secure-code.fd" = {
