@@ -142,7 +142,6 @@ flake-overlays:
 
     # VirtualBox
     virtualbox.host.enable = true;
-    virtualbox.host.enableExtensionPack = true;
   };
 
   users.users.veryloooong.extraGroups = [
