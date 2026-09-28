@@ -47,12 +47,10 @@
     obsidian
     kdePackages.krecorder
     officecli
+    antigravity-cli
 
     # remote
     kdePackages.krdc
-
-    # security work
-    wireshark
 
     # language servers
     nixd
