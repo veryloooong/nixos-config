@@ -159,6 +159,7 @@ in
     file
     wget
     curl
+    helix
     ripgrep
     wl-clipboard
     xsettingsd
@@ -170,7 +171,6 @@ in
     # development
     git
     gnumake
-    sccache
 
     # productivity
     chromium
@@ -251,12 +251,12 @@ in
     };
 
   # Make Neovim the default editor even though I use VSCode because VIM is some unc type shi
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    viAlias = true;
-    vimAlias = true;
-  };
+  # programs.neovim = {
+  #   enable = true;
+  #   defaultEditor = true;
+  #   viAlias = true;
+  #   vimAlias = true;
+  # };
 
   # Enable nix-ld to run all binaries
   programs.nix-ld = {
@@ -289,8 +289,7 @@ in
 
   # EnvVars
   environment.variables = {
-    EDITOR = "nvim";
-    RUSTC_WRAPPER = "sccache";
+    EDITOR = "hx";
 
     # Claude Code → DeepSeek's Anthropic-compatible API
     ANTHROPIC_BASE_URL = "https://api.deepseek.com/anthropic";
@@ -319,8 +318,7 @@ in
   networking.nftables.enable = true;
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 22 8090 ];
-    allowedUDPPorts = [ 8090 ];
+    allowedTCPPorts = [ 22 ];
     trustedInterfaces = [
       "Mihomo"
     ];
