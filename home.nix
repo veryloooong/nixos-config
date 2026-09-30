@@ -14,7 +14,10 @@
     inputs.sops-nix.homeManagerModules.sops
   ];
 
+  # duh
   programs.home-manager.enable = true;
+
+  # Zen Browser
   programs.zen-browser.enable = true;
   programs.zen-browser.nativeMessagingHosts = [ pkgs.firefoxpwa ];
 
@@ -95,15 +98,6 @@
         email = "hailong2004ptcnn@gmail.com";
         name = "Hải Long";
       };
-      alias = {
-        co = "checkout";
-        cam = "commit -am";
-        pl = "pull";
-        f = "fetch";
-        ph = "push";
-        aa = "add .";
-        a = "add";
-      };
       init.defaultBranch = "main";
     };
   };
@@ -130,11 +124,15 @@
     package = pkgs.vscode.fhs;
   };
 
-  # direnv
-  programs.direnv = {
-    enable = true;
-    enableZshIntegration = true; # see note on other shells below
-    nix-direnv.enable = true;
+  # Helix
+  programs.helix = {
+    settings = {
+      editor = {
+        default-yank-register = "+";
+        line-number = "relative";
+        cursor-shape = { insert = "bar"; };
+      };
+    };
   };
 
   # other dotfiles
@@ -143,10 +141,6 @@
       config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/config/rustfmt/rustfmt.toml";
     ".config/zellij/config.kdl".source =
       config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/config/zellij/config.kdl";
-    ".config/compose/windows.yaml".source =
-      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/config/compose/windows.yaml";
-    ".config/compose/macos.yaml".source =
-      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/config/compose/macos.yaml";
   };
 
   # === GAMING ===
