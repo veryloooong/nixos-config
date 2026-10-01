@@ -78,6 +78,7 @@ flake-overlays:
     kdePackages.kamoso # Camera
     kdePackages.kcalc # Calculator
     kdePackages.qtstyleplugin-kvantum
+    kdePackages.krdp
 
     # Virtualisation
     fuse-overlayfs
