@@ -298,7 +298,6 @@ in
     ANTHROPIC_DEFAULT_SONNET_MODEL = "deepseek-v4-flash[1m]";
     ANTHROPIC_DEFAULT_HAIKU_MODEL = "deepseek-v4-flash";
     CLAUDE_CODE_SUBAGENT_MODEL = "deepseek-v4-flash";
-    CLAUDE_CODE_EFFORT_LEVEL = "max";
 
     # devenv
     DEVENV_MAX_JOBS = 2;

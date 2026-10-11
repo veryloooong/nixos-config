@@ -46,11 +46,11 @@
     kdePackages.kolourpaint
     xournalpp
     kdePackages.kdenlive
-    pdfstudioviewer
     obsidian
     kdePackages.krecorder
     officecli
     antigravity-cli
+    claude-code
 
     # remote
     kdePackages.krdc
@@ -73,7 +73,7 @@
     bun
 
     # Research software
-    zotero
+    # zotero
 
     # debugging
     lldb # for rust
@@ -127,6 +127,7 @@
   # Helix
   programs.helix = {
     settings = {
+      theme = "zed_onedark";
       editor = {
         default-yank-register = "+";
         line-number = "relative";
