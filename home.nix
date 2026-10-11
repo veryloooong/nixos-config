@@ -124,24 +124,14 @@
     package = pkgs.vscode.fhs;
   };
 
-  # Helix
-  programs.helix = {
-    settings = {
-      theme = "zed_onedark";
-      editor = {
-        default-yank-register = "+";
-        line-number = "relative";
-        cursor-shape = { insert = "bar"; };
-      };
-    };
-  };
-
   # other dotfiles
   home.file = {
     ".config/rustfmt/rustfmt.toml".source =
       config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/config/rustfmt/rustfmt.toml";
     ".config/zellij/config.kdl".source =
       config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/config/zellij/config.kdl";
+    ".config/helix/config.toml".source =
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/config/helix/config.toml";
   };
 
   # === GAMING ===
