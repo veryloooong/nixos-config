@@ -201,6 +201,15 @@
     };
   };
 
+  # === OTHERS ===
+
+  # keepassxc
+  xdg.autostart.enable = true;
+  programs.keepassxc = {
+    enable = true;
+    autostart = true;
+  };
+
   # do not touch
   home.stateVersion = "25.11";
 }
