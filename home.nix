@@ -216,11 +216,20 @@
     enable = true;
     gateway.enable = true;
     environmentFiles = [ "/home/veryloooong/.config/hermes/env" ];
+    environment = {
+      # The Chrome-for-Testing build hermes downloads cannot load its shared
+      # libraries on NixOS (exit 127). Point it at the system Chromium instead:
+      # browser_tool_install skips the CfT download entirely once this is set,
+      # so a `hermes tools` reinstall cannot break the browser again.
+      AGENT_BROWSER_EXECUTABLE_PATH = "/run/current-system/sw/bin/chromium";
+    };
     settings = {
       model = {
         default = "deepseek/deepseek-flash";
         provider = "auto";
       };
+      # Local Chromium only; no cloud browser provider.
+      browser.cloud_provider = "local";
     };
   };
 
