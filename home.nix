@@ -12,6 +12,7 @@
     inputs.zen-browser.homeModules.twilight
     inputs.vicinae.homeManagerModules.default
     inputs.sops-nix.homeManagerModules.sops
+    inputs.hermes-agent.homeManagerModules.default
   ];
 
   # duh
@@ -208,6 +209,17 @@
   programs.keepassxc = {
     enable = true;
     autostart = true;
+  };
+
+  # Hermes agent
+  services.hermes-agent = {
+    enable = true;
+    gateway.enable = true;
+  };
+
+  programs.hermes-agent = {
+    enable = true;
+    desktop.enable = true;
   };
 
   # do not touch

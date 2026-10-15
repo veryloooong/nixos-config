@@ -128,6 +128,7 @@ in
   # Define a user account. Don't forget to set a password with ‘passwd’
   users.users.veryloooong = {
     isNormalUser = true;
+    linger = true;
     description = "Hải Long";
     extraGroups = [
       "wheel"
