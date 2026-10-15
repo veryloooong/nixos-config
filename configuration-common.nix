@@ -348,5 +348,14 @@ in
       path = "/home/veryloooong/.config/claude-code/api-key";
       owner = config.users.users.veryloooong.name;
     };
+
+    # Dotenv form of the same key. services.hermes-agent concatenates its
+    # environmentFiles into $HERMES_HOME/.env, and its gateway daemon runs
+    # outside the interactive shell that exports DEEPSEEK_API_KEY.
+    templates."hermes-env" = {
+      content = "DEEPSEEK_API_KEY=${config.sops.placeholder.deepseek-api-key}\n";
+      path = "/home/veryloooong/.config/hermes/env";
+      owner = config.users.users.veryloooong.name;
+    };
   };
 }

@@ -215,6 +215,13 @@
   services.hermes-agent = {
     enable = true;
     gateway.enable = true;
+    environmentFiles = [ "/home/veryloooong/.config/hermes/env" ];
+    settings = {
+      model = {
+        default = "deepseek/deepseek-flash";
+        provider = "auto";
+      };
+    };
   };
 
   programs.hermes-agent = {
