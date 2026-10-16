@@ -341,6 +341,8 @@ in
 
     # Declare the secret so sops-nix knows which key to extract from the YAML file
     secrets."deepseek-api-key" = { };
+    secrets."telegram-bot-token" = { };
+    secrets."telegram-allowed-users" = { };
 
     # Template: write the decrypted API key into the user's home directory
     templates."deepseek-api-key" = {
@@ -352,8 +354,15 @@ in
     # Dotenv form of the same key. services.hermes-agent concatenates its
     # environmentFiles into $HERMES_HOME/.env, and its gateway daemon runs
     # outside the interactive shell that exports DEEPSEEK_API_KEY.
+    # Telegram credentials. Laptop only: one bot token can only be polled by one
+    # gateway, and home.nix's environmentFiles is shared by both hosts.
     templates."hermes-env" = {
-      content = "DEEPSEEK_API_KEY=${config.sops.placeholder.deepseek-api-key}\n";
+      content =
+        "DEEPSEEK_API_KEY=${config.sops.placeholder.deepseek-api-key}\n"
+        + lib.optionalString (config.networking.hostName == "lebobo") ''
+          TELEGRAM_BOT_TOKEN=${config.sops.placeholder.telegram-bot-token}
+          TELEGRAM_ALLOWED_USERS=${config.sops.placeholder.telegram-allowed-users}
+        '';
       path = "/home/veryloooong/.config/hermes/env";
       owner = config.users.users.veryloooong.name;
     };
