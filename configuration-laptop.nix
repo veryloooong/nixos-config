@@ -124,6 +124,11 @@ flake-overlays:
   # Virtualisation
   virtualisation = {
     containers.enable = true;
+    # Short names like `podman run nginx` resolve against these in order.
+    containers.registries.search = [
+      "docker.io"
+      "quay.io"
+    ];
     oci-containers.backend = "podman";
     podman = {
       enable = true;
