@@ -40,7 +40,6 @@
     unrar
 
     # productivity
-    libreoffice
     thunderbird
     anki
     vscode-runner
