@@ -150,7 +150,7 @@ flake-overlays:
     };
 
     # VirtualBox
-    # virtualbox.host.enable = true;
+    virtualbox.host.enable = true;
   };
 
   users.users.veryloooong.extraGroups = [
