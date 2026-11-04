@@ -124,18 +124,21 @@ flake-overlays:
   # Virtualisation
   virtualisation = {
     containers.enable = true;
-    # Short names like `podman run nginx` resolve against these in order.
-    containers.registries.search = [
-      "docker.io"
-      "quay.io"
-    ];
+    # (AI) Podman 6.0+ format: unqualified search registries for short container image names
+    containers.registries.settings = {
+      unqualified-search-registries = [
+        "docker.io"
+        "quay.io"
+      ];
+    };
     oci-containers.backend = "podman";
     podman = {
       enable = true;
       dockerCompat = true;
       defaultNetwork.settings.dns_enabled = true;
     };
-    containers.storage.settings = {
+    # (AI) Podman storage configuration for rootful containers
+    containers.storage.rootful.settings = {
       storage = {
         driver = "overlay";
         runroot = "/run/containers/storage";

@@ -153,6 +153,11 @@ in
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  # (AI) Suppress fatal evaluation errors for deprecated/broken packages (gtk+ for Lutris FHS, libguestfs for Vagrant)
+  nixpkgs.config.problems.handlers = {
+    "gtk+".broken = "warn";
+    libguestfs.broken = "warn";
+  };
 
   # List packages installed in system profile
   environment.systemPackages = with pkgs; [
