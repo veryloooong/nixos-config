@@ -52,6 +52,9 @@ flake-overlays:
 
   networking.hostName = "lebobo"; # Define your hostname.
 
+  # VPN
+  services.mullvad-vpn.enable = true;
+
   services.libinput.enable = true;
 
   environment.systemPackages = with pkgs; [
