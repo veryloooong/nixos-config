@@ -73,7 +73,7 @@
     lua
     luarocks
     openjdk
-    nodenv
+    fnm
     bun
 
     # Research software
