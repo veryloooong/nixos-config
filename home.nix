@@ -50,8 +50,11 @@
     kdePackages.krecorder
     officecli
     antigravity-cli
-    claude-code
+    opencode
     telegram-desktop
+
+    # browsers
+    tor-browser
 
     # remote
     kdePackages.krdc
