@@ -1,8 +1,7 @@
 # My own NixOS config
 
-One Git repo for NixOS configs for both my VMs and my laptop
+One Git repo for my NixOS laptop config
 
-- I have a NixOS VM at work. If I make more of them I will change the hardware config
 - And I have a laptop
 
 ## Prerequisites for no bug setup

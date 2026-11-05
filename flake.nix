@@ -68,15 +68,6 @@
       ];
     in
     {
-      nixosConfigurations.nixos-vm = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./configuration-vm.nix
-        ]
-        ++ common-modules;
-      };
-
       nixosConfigurations.lebobo = nixpkgs.lib.nixosSystem rec {
         inherit system;
         specialArgs = { inherit inputs; };

@@ -234,7 +234,6 @@
       browser.cloud_provider = "local";
       # Bots have no presence dot, so Hermes writes the bot's short
       # description instead: "Online" on connect, "Offline" on clean exit.
-      # Inert on the VM — no token there, so the adapter never starts.
       gateway.platforms.telegram.extra = {
         status_indicator = true;
         status_online = "🟢 Online";
