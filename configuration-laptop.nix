@@ -55,6 +55,12 @@ flake-overlays:
   # VPN
   services.mullvad-vpn.enable = true;
 
+  # Tor SOCKS proxy (127.0.0.1:9050)
+  services.tor = {
+    enable = true;
+    client.enable = true;
+  };
+
   services.libinput.enable = true;
 
   environment.systemPackages = with pkgs; [
