@@ -227,7 +227,7 @@
     };
     settings = {
       model = {
-        default = "deepseek/deepseek-flash";
+        default = "zai/glm-5.3-flash";
         provider = "auto";
       };
       # Local Chromium only; no cloud browser provider.
