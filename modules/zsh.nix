@@ -52,6 +52,17 @@
         export ANTHROPIC_AUTH_TOKEN="$(cat ~/.config/claude-code/api-key)"
         export DEEPSEEK_API_KEY="$(cat ~/.config/claude-code/api-key)"
       fi
+
+      # Z.ai (GLM models): sops-nix template, only set when non-empty
+      if [ -s ~/.config/claude-code/zai-api-key ]; then
+        export ZAI_API_KEY="$(cat ~/.config/claude-code/zai-api-key)"
+      fi
+
+      # GitHub token for the skills hub / gh (5,000 req/hr instead of 60)
+      if [ -s ~/.config/claude-code/github-token ]; then
+        export GITHUB_TOKEN="$(cat ~/.config/claude-code/github-token)"
+        export GH_TOKEN="$GITHUB_TOKEN"
+      fi
     '';
   };
 

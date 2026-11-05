@@ -346,6 +346,8 @@ in
 
     # Declare the secret so sops-nix knows which key to extract from the YAML file
     secrets."deepseek-api-key" = { };
+    secrets."zai-api-key" = { };
+    secrets."github-token" = { };
     secrets."telegram-bot-token" = { };
     secrets."telegram-allowed-users" = { };
 
@@ -356,7 +358,23 @@ in
       owner = config.users.users.veryloooong.name;
     };
 
-    # Dotenv form of the same key. services.hermes-agent concatenates its
+    # Z.ai (GLM) key, for Z.ai's Anthropic-compatible endpoint / GLM models.
+    # Exported as $ZAI_API_KEY by modules/zsh.nix and passed to Hermes below.
+    templates."zai-api-key" = {
+      content = "${config.sops.placeholder.zai-api-key}";
+      path = "/home/veryloooong/.config/claude-code/zai-api-key";
+      owner = config.users.users.veryloooong.name;
+    };
+
+    # GitHub token: raises the skills-hub / API rate limit (5,000/hr instead of
+    # 60/hr) and authenticates gh. Exported as $GITHUB_TOKEN by modules/zsh.nix.
+    templates."github-token" = {
+      content = "${config.sops.placeholder.github-token}";
+      path = "/home/veryloooong/.config/claude-code/github-token";
+      owner = config.users.users.veryloooong.name;
+    };
+
+    # Dotenv form of the same keys. services.hermes-agent concatenates its
     # environmentFiles into $HERMES_HOME/.env, and its gateway daemon runs
     # outside the interactive shell that exports DEEPSEEK_API_KEY.
     # Telegram credentials. Laptop only: one bot token can only be polled by one
@@ -364,6 +382,8 @@ in
     templates."hermes-env" = {
       content =
         "DEEPSEEK_API_KEY=${config.sops.placeholder.deepseek-api-key}\n"
+        + "ZAI_API_KEY=${config.sops.placeholder.zai-api-key}\n"
+        + "GITHUB_TOKEN=${config.sops.placeholder.github-token}\n"
         + lib.optionalString (config.networking.hostName == "lebobo") ''
           TELEGRAM_BOT_TOKEN=${config.sops.placeholder.telegram-bot-token}
           TELEGRAM_ALLOWED_USERS=${config.sops.placeholder.telegram-allowed-users}
