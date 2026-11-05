@@ -163,6 +163,7 @@ in
   environment.systemPackages = with pkgs; [
     # system
     file
+    p7zip
     wget
     curl
     helix

@@ -35,7 +35,6 @@
     android-tools # adb and others
     ffmpeg
     dust
-    p7zip
     devenv
     unrar
 
