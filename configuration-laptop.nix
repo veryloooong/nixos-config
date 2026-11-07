@@ -54,6 +54,7 @@ flake-overlays:
 
   # VPN
   services.mullvad-vpn.enable = true;
+  services.mullvad-vpn.gui.enable = true;
 
   # Tor SOCKS proxy (127.0.0.1:9050)
   services.tor = {

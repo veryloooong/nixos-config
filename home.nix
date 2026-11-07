@@ -86,7 +86,6 @@
     qbittorrent
     vesktop
     vlc
-    (callPackage ./custom/bitchord.nix { })
 
     # wine
     inputs.nix-gaming.packages.${pkgs.stdenv.hostPlatform.system}.wine-ge
