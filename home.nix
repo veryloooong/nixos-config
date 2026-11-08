@@ -39,7 +39,6 @@
     unrar
 
     # productivity
-    thunderbird
     anki
     vscode-runner
     kdePackages.kolourpaint
