@@ -12,6 +12,10 @@ in
 pkgs.appimageTools.wrapType2 rec {
   inherit pname version src;
 
+  # The AppImage expects libgpg-error.so.0 from the host distro (NixOS: absent).
+  # Needed by the bundled libgcrypt <- libssh-gcrypt <- webkit2gtk.
+  extraPkgs = pkgs: [ pkgs.libgpg-error ];
+
   extraInstallCommands = ''
     install -m 444 -D ${appimageContents}/limusic.desktop -t $out/share/applications
     substituteInPlace $out/share/applications/limusic.desktop \
