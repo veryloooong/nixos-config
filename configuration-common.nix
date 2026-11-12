@@ -324,8 +324,8 @@ in
   networking.nftables.enable = true;
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 22 3389 ];
-    allowedUDPPorts = [ 3389 ];
+    allowedTCPPorts = [ 22 3389 49374 ];
+    allowedUDPPorts = [ 3389 49374 ];
     trustedInterfaces = [
       "Mihomo"
     ];
