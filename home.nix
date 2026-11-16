@@ -207,10 +207,6 @@
 
   # keepassxc
   xdg.autostart.enable = true;
-  programs.keepassxc = {
-    enable = true;
-    autostart = true;
-  };
 
   # Hermes agent
   services.hermes-agent = {
