@@ -56,6 +56,7 @@
 
     # remote
     kdePackages.krdc
+    (callPackage ./custom/linuxviewer.nix { })
 
     # language servers
     nixd

@@ -272,6 +272,8 @@ in
       libxcrypt
       libxcrypt-legacy
       coreutils
+      libgpg-error
+      libgcrypt
     ]);
   };
 
