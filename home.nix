@@ -87,6 +87,7 @@
     vesktop
     vlc
     (callPackage ./custom/limusic.nix { })
+    (callPackage ./custom/zalo.nix { })
 
     # wine
     inputs.nix-gaming.packages.${pkgs.stdenv.hostPlatform.system}.wine-ge
