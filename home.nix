@@ -13,6 +13,7 @@
     inputs.vicinae.homeManagerModules.default
     inputs.sops-nix.homeManagerModules.sops
     inputs.hermes-agent.homeManagerModules.default
+    inputs.zalo-for-linux.homeModules.default
   ];
 
   # duh
@@ -87,11 +88,18 @@
     vesktop
     vlc
     (callPackage ./custom/limusic.nix { })
-    (callPackage ./custom/zalo.nix { })
 
     # wine
     inputs.nix-gaming.packages.${pkgs.stdenv.hostPlatform.system}.wine-ge
   ];
+
+  # Zalo (upstream flake packaging, ZaDark variant)
+  programs.zalo = {
+    enable = true;
+    # Explicit so we get the overlay-built package (fixed dwarfs), not the
+    # module's default built with plain dwarfs.
+    package = pkgs.zalo;
+  };
 
   # === DEVELOPMENT ===
 

@@ -694,6 +694,7 @@
         "nixpkgs": "nixpkgs_5",
         "sops-nix": "sops-nix",
         "vicinae": "vicinae",
+        "zalo-for-linux": "zalo-for-linux",
         "zen-browser": "zen-browser"
       }
     },
@@ -818,6 +819,26 @@
       "original": {
         "owner": "vicinaehq",
         "repo": "vicinae",
+        "type": "github"
+      }
+    },
+    "zalo-for-linux": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1795234762,
+        "narHash": "sha256-+a3x8iiNdBnu/8W5cYi3MksIn/NO5PjDjqQuiV7PGpc=",
+        "owner": "VN-Linux-Family",
+        "repo": "zalo-for-linux",
+        "rev": "4872d725ddc33981c2d10442df155c9d486cb5f6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "VN-Linux-Family",
+        "repo": "zalo-for-linux",
         "type": "github"
       }
     },
