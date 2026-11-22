@@ -94,12 +94,7 @@
   ];
 
   # Zalo (upstream flake packaging, ZaDark variant)
-  programs.zalo = {
-    enable = true;
-    # Explicit so we get the overlay-built package (fixed dwarfs), not the
-    # module's default built with plain dwarfs.
-    package = pkgs.zalo;
-  };
+  programs.zalo.enable = true;
 
   # === DEVELOPMENT ===
 

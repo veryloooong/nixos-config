@@ -69,17 +69,7 @@
         }
       ];
       flake-overlays = [
-        # dwarfs 0.15.8's bundled test suite aborts in-sandbox and its
-        # WITH_TESTS=ON cmake path needs network FetchContent — build it
-        # test-free so zalo-for-linux's DWARFS AppImage extraction works.
-        (final: prev: {
-          dwarfs = prev.dwarfs.overrideAttrs (old: {
-            doCheck = false;
-            cmakeFlags = (old.cmakeFlags or [ ]) ++ [ "-DWITH_TESTS=OFF" ];
-          });
-        })
-
-        # Zalo (upstream packaging; depends on the dwarfs fix above)
+        # Zalo (upstream packaging)
         inputs.zalo-for-linux.overlays.default
       ];
     in
