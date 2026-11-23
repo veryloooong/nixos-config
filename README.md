@@ -2,10 +2,6 @@
 
 This Git repository holds the NixOS configuration for one laptop.
 
-## Prerequisites
-
-Install MATLAB first. Follow the setup steps in this [GitLab repository](https://gitlab.com/doronbehar/nix-matlab).
-
 ## Setup (fresh NixOS install)
 
 1. Restore your SSH key to `~/.ssh/id_ed25519`. The `ssh-to-age` command below derives the age key from it.
@@ -58,15 +54,3 @@ cd ~/nix && nix shell nixpkgs#sops -c sops secrets/claude-code.yaml
 | System decryption | `configuration.nix` sops block                    | Extracts the key at build time. Writes `~/.config/claude-code/api-key` |
 | Shell env         | `modules/zsh.nix` initContent                     | Reads the file and exports `ANTHROPIC_AUTH_TOKEN`                      |
 | System env vars   | `configuration.nix` environment.variables         | `ANTHROPIC_BASE_URL`, model names, etc.                                |
-
-### Claude Code → DeepSeek
-
-Claude Code connects directly to [DeepSeek's Anthropic-compatible API](https://api-docs.deepseek.com/quick_start/agent_integrations/claude_code) at `https://api.deepseek.com/anthropic`. The connection needs no translation layer.
-
-Model mapping:
-
-| Claude model | Maps to DeepSeek    |
-|--------------|---------------------|
-| Opus         | `deepseek-v4-pro`   |
-| Sonnet       | `deepseek-v4-pro`   |
-| Haiku        | `deepseek-v4-flash` |
