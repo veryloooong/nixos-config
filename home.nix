@@ -49,7 +49,7 @@
     kdePackages.krecorder
     officecli
     antigravity-cli
-    antigravity-ide-fhs
+    (callPackage ./custom/antigravity-app.nix { }) # Antigravity desktop app
     opencode
     telegram-desktop
 
