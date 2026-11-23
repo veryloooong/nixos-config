@@ -1,55 +1,49 @@
-# My own NixOS config
+# NixOS config
 
-One Git repo for my NixOS laptop config
+This Git repository holds the NixOS configuration for one laptop.
 
-- And I have a laptop
+## Prerequisites
 
-## Prerequisites for no bug setup
-
-- Install MATLAB and setup according to this [GitLab repo](https://gitlab.com/doronbehar/nix-matlab)
+Install MATLAB first. Follow the setup steps in this [GitLab repository](https://gitlab.com/doronbehar/nix-matlab).
 
 ## Setup (fresh NixOS install)
 
+1. Restore your SSH key to `~/.ssh/id_ed25519`. The `ssh-to-age` command below derives the age key from it.
+2. Clone this repository to `~/nix`.
+3. Create the symlink from `/etc/nixos` to `~/nix`.
+4. Rebuild the system.
+
+Run these commands:
+
 ```sh
-# 1. Restore your SSH key (~/.ssh/id_ed25519) — the age key is derived from it
 mkdir -p ~/.config/sops/age
 read -s SSH_TO_AGE_PASSPHRASE; export SSH_TO_AGE_PASSPHRASE
 nix shell nixpkgs#ssh-to-age -c ssh-to-age \
   -private-key -i ~/.ssh/id_ed25519 \
   -o ~/.config/sops/age/keys.txt
 
-# 2. Clone to ~/nix
 git clone https://github.com/veryloooong/nixos-config ~/nix
-
-# 3. Symlink to /etc/nixos
 sudo ln -s ~/nix /etc/nixos
-
-# 4. Create a host config for the new machine
-#    Copy configuration-laptop.nix and hardware-configuration-laptop.nix,
-#    generate hardware-config with: nixos-generate-config
-
-# 5. Rebuild
 sudo nixos-rebuild switch
 ```
 
 ## Secrets (sops-nix)
 
-This repo uses [sops-nix](https://github.com/Mic92/sops-nix) to encrypt secrets so they can be safely committed to Git.
+This repository uses [sops-nix](https://github.com/Mic92/sops-nix). It encrypts secrets, so you can commit them to Git safely.
 
 ### First-time setup
 
+Add your API key to the encrypted file. sops encrypts the file when you save it.
+
 ```sh
-# Paste your DeepSeek API key into the encrypted file:
 cd ~/nix
 nix shell nixpkgs#sops -c sops secrets/claude-code.yaml
-# In the editor:  deepseek-api-key: sk-your-key-here
-# Save & exit — sops encrypts it automatically.
-
-# Rebuild to deploy:
+# In the editor:  deepseek-api-key: ***
+# Save and exit. Then rebuild to deploy:
 sudo nixos-rebuild switch
 ```
 
-### View/edit secrets later
+### View or edit secrets later
 
 ```sh
 cd ~/nix && nix shell nixpkgs#sops -c sops secrets/claude-code.yaml
@@ -57,21 +51,22 @@ cd ~/nix && nix shell nixpkgs#sops -c sops secrets/claude-code.yaml
 
 ### How it works
 
-| Component         | What                                             | Managed by                                                            |
-| ----------------- | ------------------------------------------------ | --------------------------------------------------------------------- |
-| Age key           | `~/.config/sops/age/keys.txt`                    | Derived from `~/.ssh/id_ed25519` via `ssh-to-age`                     |
-| Encrypted file    | `secrets/claude-code.yaml`                       | Committed to Git, holds `deepseek-api-key`                            |
-| System decryption | `configuration-common.nix` sops block            | Extracts key at build time, writes to `~/.config/claude-code/api-key` |
-| Shell env         | `modules/zsh.nix` initContent                    | Reads the file and exports `ANTHROPIC_AUTH_TOKEN`                     |
-| System env vars   | `configuration-common.nix` environment.variables | `ANTHROPIC_BASE_URL`, model names, etc.                               |
+| Component         | What                                              | Managed by                                                             |
+| ----------------- | ------------------------------------------------- | ---------------------------------------------------------------------- |
+| Age key           | `~/.config/sops/age/keys.txt`                     | Derived from `~/.ssh/id_ed25519` via `ssh-to-age`                      |
+| Encrypted file    | `secrets/claude-code.yaml`                        | Committed to Git. Holds `deepseek-api-key`                             |
+| System decryption | `configuration.nix` sops block                    | Extracts the key at build time. Writes `~/.config/claude-code/api-key` |
+| Shell env         | `modules/zsh.nix` initContent                     | Reads the file and exports `ANTHROPIC_AUTH_TOKEN`                      |
+| System env vars   | `configuration.nix` environment.variables         | `ANTHROPIC_BASE_URL`, model names, etc.                                |
 
 ### Claude Code → DeepSeek
 
-Claude Code talks directly to [DeepSeek's Anthropic-compatible API](https://api-docs.deepseek.com/quick_start/agent_integrations/claude_code) at `https://api.deepseek.com/anthropic`. No translation layer needed.
+Claude Code connects directly to [DeepSeek's Anthropic-compatible API](https://api-docs.deepseek.com/quick_start/agent_integrations/claude_code) at `https://api.deepseek.com/anthropic`. The connection needs no translation layer.
 
 Model mapping:
-| Claude model | Maps to DeepSeek |
-|---|---|
-| Opus | `deepseek-v4-pro` |
-| Sonnet | `deepseek-v4-pro` |
-| Haiku | `deepseek-v4-flash` |
+
+| Claude model | Maps to DeepSeek    |
+|--------------|---------------------|
+| Opus         | `deepseek-v4-pro`   |
+| Sonnet       | `deepseek-v4-pro`   |
+| Haiku        | `deepseek-v4-flash` |
