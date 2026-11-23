@@ -159,7 +159,8 @@ in
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    jack.enable = true;
+    # JACK apps (if ever needed): run them with `pw-jack <app>`
+    # (provided by pkgs.pipewire.jack in systemPackages)
   };
 
   # Enable touchpad support (enabled default in most desktopManager)
@@ -225,6 +226,7 @@ in
     kdePackages.plasma-workspace
     kdePackages.filelight
     kdePackages.sddm-kcm
+    pipewire.jack # pw-jack wrapper for JACK apps
 
     # development
     git
