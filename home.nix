@@ -49,6 +49,7 @@
     kdePackages.krecorder
     officecli
     antigravity-cli
+    antigravity-ide-fhs
     opencode
     telegram-desktop
 
