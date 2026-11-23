@@ -63,8 +63,14 @@ let
       xorg.libXrandr
     ];
     # --no-sandbox is required on NixOS: chrome-sandbox needs setuid, which the
-    # store cannot provide.
-    runScript = "${app}/share/antigravity/antigravity --no-sandbox";
+    # store cannot provide. ELECTRON_OZONE_PLATFORM_HINT=auto runs it natively
+    # on Wayland so it follows the compositor scale (HiDPI) correctly.
+    # --force-device-scale-factor=1 pins the UI at 100% — the user prefers the
+    # app smaller than the 2x display scale.
+    runScript = pkgs.writeShellScript "${pname}-wrapper" ''
+      export ELECTRON_OZONE_PLATFORM_HINT=auto
+      exec ${app}/share/antigravity/antigravity --no-sandbox --force-device-scale-factor=1 "$@"
+    '';
   };
 in
 pkgs.runCommand pname
@@ -87,7 +93,7 @@ pkgs.runCommand pname
     Type=Application
     Name=Antigravity
     Comment=Google Antigravity desktop app
-    Exec=antigravity --no-sandbox %U
+    Exec=env ELECTRON_OZONE_PLATFORM_HINT=auto antigravity --no-sandbox --force-device-scale-factor=1 %U
     Icon=antigravity-app
     Terminal=false
     Categories=Development;
