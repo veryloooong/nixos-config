@@ -199,7 +199,7 @@ in
       }
     ];
   };
-  users.extraGroups.vboxusers.members = [ "veryloooong" ];
+  users.extraGroups.libvirtd.members = [ "veryloooong" ];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -455,7 +455,7 @@ in
     gamescopeSession.enable = true;
   };
 
-  # Virtualisation
+  # Virtualisation (KVM/QEMU via libvirtd, managed with virt-manager)
   virtualisation = {
     containers.enable = true;
     # (AI) Podman 6.0+ format: unqualified search registries for short container image names
@@ -483,9 +483,22 @@ in
       }; # storage
     };
 
-    # VirtualBox
-    virtualbox.host.enable = true;
+    # libvirtd/QEMU: UEFI firmware, TPM (Windows 11), virtio-fs sharing
+    libvirtd = {
+      enable = true;
+      qemu = {
+        package = pkgs.qemu_kvm;
+        runAsRoot = true;
+        swtpm.enable = true;
+        # OVMF firmware ships with QEMU by default in current nixpkgs
+        vhostUserPackages = with pkgs; [ virtiofsd ];
+      };
+    };
+    spiceUSBRedirection.enable = true;
   };
+
+  # virt-manager GUI
+  programs.virt-manager.enable = true;
 
   # VPN
   services.mullvad-vpn.enable = true;
