@@ -45,8 +45,6 @@
     let
       system = "x86_64-linux";
       common-modules = [
-        ./configuration-common.nix
-
         # Determinate has garbage collection + Flakehub search
         determinate.nixosModules.default
 
@@ -78,7 +76,7 @@
         inherit system;
         specialArgs = { inherit inputs; };
         modules = [
-          (import ./configuration-laptop.nix flake-overlays)
+          (import ./configuration.nix flake-overlays)
           lanzaboote.nixosModules.lanzaboote
         ]
         ++ common-modules;

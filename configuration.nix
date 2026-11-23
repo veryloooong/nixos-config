@@ -1,9 +1,12 @@
+flake-overlays:
+
 {
   config,
   pkgs,
   lib,
   options,
   inputs,
+  system ? pkgs.system,
   ...
 }:
 
@@ -13,15 +16,27 @@ let
   sf-pro = import ./custom/sf-pro.nix { inherit pkgs; };
 in
 {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration-laptop.nix
+  ];
+
+  # Overlays: keep this order — the module system sorts by file path, so
+  # configuration-common evaluated BEFORE configuration-laptop pre-merge.
   nixpkgs.overlays = [
     (final: prev: {
       openldap = prev.openldap.overrideAttrs (oldAttrs: {
         doCheck = false;
       });
     })
-  ];
+    (
+      final: prev: {
+        # Your own overlays...
+      }
+    )
+  ] ++ flake-overlays;
 
-  # Enable flakes and the new Nix CLI
+  # Nix
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
@@ -56,8 +71,38 @@ in
   # Enable store optimisation
   nix.optimise.automatic = true;
 
+  # Bootloader and boot screen
+  # boot.loader.systemd-boot.enable = true;
+
+  boot.loader.systemd-boot.enable = lib.mkForce false;
+
+  boot.lanzaboote = {
+    enable = true;
+    pkiBundle = "/var/lib/sbctl";
+  };
+
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.plymouth.enable = true;
+
   # Use latest kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  # SysRq
+  boot.kernel.sysctl."kernel.sysrq" = 502;
+
+  # swap fix
+  boot.resumeDevice = "/dev/disk/by-label/swap"; # Replace with your actual swap UUID
+
+  # Firmware/hardware stuff
+  hardware.cpu.amd.updateMicrocode = true;
+  services.fwupd.enable = true;
+
+  hardware.amdgpu.opencl.enable = true;
+
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+
+  networking.hostName = "lebobo"; # Define your hostname.
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -129,10 +174,14 @@ in
     isNormalUser = true;
     linger = true;
     description = "Hải Long";
+    # Order preserved from the pre-merge modules (configuration-common sorted
+    # before configuration-laptop).
     extraGroups = [
       "wheel"
       "libvirtd"
       "dialout"
+      "podman"
+      "kvm"
     ]; # sudo access
     shell = pkgs.zsh;
     useDefaultShell = true;
@@ -149,6 +198,7 @@ in
       }
     ];
   };
+  users.extraGroups.vboxusers.members = [ "veryloooong" ];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -158,7 +208,9 @@ in
     libguestfs.broken = "warn";
   };
 
-  # List packages installed in system profile
+  # List packages installed in system profile.
+  # Element order preserved from the pre-merge modules (configuration-common
+  # sorted before configuration-laptop).
   environment.systemPackages = with pkgs; [
     # system
     file
@@ -180,6 +232,37 @@ in
 
     # productivity
     chromium
+
+    # development (laptop)
+    cmake
+
+    # secure boot
+    sbctl
+
+    # Gaming (laptop)
+    protonup-qt
+    (heroic.override {
+      extraPkgs = pkgs: [
+        pkgs.gamescope
+        pkgs.gamemode
+      ];
+    })
+
+    # utility
+    pocl
+
+    # KDE (laptop)
+    kdePackages.kup # Backup
+    kdePackages.kamoso # Camera
+    kdePackages.kcalc # Calculator
+    kdePackages.qtstyleplugin-kvantum
+    kdePackages.krdp
+
+    # Virtualisation
+    fuse-overlayfs
+    podman-compose
+    crun
+    vagrant
   ];
 
   # fonts
@@ -267,7 +350,7 @@ in
   # Enable nix-ld to run all binaries
   programs.nix-ld = {
     enable = true;
-    libraries = options.programs.nix-ld.libraries.default ++ (with pkgs; [ 
+    libraries = options.programs.nix-ld.libraries.default ++ (with pkgs; [
       libxcrypt
       libxcrypt-legacy
       coreutils
@@ -336,6 +419,96 @@ in
   # mitmproxy cert
   security.pki.certificates = [ (builtins.readFile ./browser/mitmproxy-ca-cert.pem) ];
 
+  # KDE Connect
+  programs.kdeconnect.enable = true;
+
+  # Battery and power management
+  services.power-profiles-daemon.enable = false;
+  services.auto-cpufreq = {
+    enable = true;
+    settings = {
+      charger = {
+        governor = "performance";
+        energy_performance_preference = "performance";
+        platform_profile = "performance";
+        turbo = "auto";
+      };
+      battery = {
+        governor = "powersave";
+        energy_performance_preference = "balance_power";
+        platform_profile = "low-power";
+        scaling_max_freq = 3200000;
+        turbo = "never";
+      };
+    };
+  };
+
+  # Gaming
+  programs.gamescope.enable = true;
+  programs.gamemode.enable = true;
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+    gamescopeSession.enable = true;
+  };
+
+  # Virtualisation
+  virtualisation = {
+    containers.enable = true;
+    # (AI) Podman 6.0+ format: unqualified search registries for short container image names
+    containers.registries.settings = {
+      unqualified-search-registries = [
+        "docker.io"
+        "quay.io"
+      ];
+    };
+    oci-containers.backend = "podman";
+    podman = {
+      enable = true;
+      dockerCompat = true;
+      defaultNetwork.settings.dns_enabled = true;
+    };
+    # (AI) Podman storage configuration for rootful containers
+    containers.storage.rootful.settings = {
+      storage = {
+        driver = "overlay";
+        runroot = "/run/containers/storage";
+        graphroot = "/var/lib/containers/storage";
+        options.overlay = {
+          mount_program = "/run/current-system/sw/bin/fuse-overlayfs";
+        };
+      }; # storage
+    };
+
+    # VirtualBox
+    virtualbox.host.enable = true;
+  };
+
+  # VPN
+  services.mullvad-vpn.enable = true;
+  services.mullvad-vpn.gui.enable = true;
+
+  # Tor SOCKS proxy (127.0.0.1:9050)
+  services.tor = {
+    enable = true;
+    client.enable = true;
+  };
+
+  environment.etc = {
+    "ovmf/edk2-x86_64-secure-code.fd" = {
+      source = config.virtualisation.libvirtd.qemu.package + "/share/qemu/edk2-x86_64-secure-code.fd";
+    };
+
+    "ovmf/edk2-i386-vars.fd" = {
+      source = config.virtualisation.libvirtd.qemu.package + "/share/qemu/edk2-i386-vars.fd";
+    };
+
+    "distrobox/distrobox.conf".text = ''
+      container_additional_volumes="/nix/store:/nix/store:ro /etc/profiles/per-user:/etc/profiles/per-user:ro /etc/static/profiles/per-user:/etc/static/profiles/per-user:ro"
+    '';
+  };
+
   # do not touch
   system.stateVersion = "25.11"; # Did you read the comment?
 
@@ -379,14 +552,13 @@ in
     # Dotenv form of the same keys. services.hermes-agent concatenates its
     # environmentFiles into $HERMES_HOME/.env, and its gateway daemon runs
     # outside the interactive shell that exports DEEPSEEK_API_KEY.
-    # Telegram credentials. Laptop only: one bot token can only be polled by one
-    # gateway, and home.nix's environmentFiles is shared by both hosts.
+    # Telegram credentials: single-host config, no conditional needed anymore.
     templates."hermes-env" = {
       content =
         "DEEPSEEK_API_KEY=${config.sops.placeholder.deepseek-api-key}\n"
         + "ZAI_API_KEY=${config.sops.placeholder.zai-api-key}\n"
         + "GITHUB_TOKEN=${config.sops.placeholder.github-token}\n"
-        + lib.optionalString (config.networking.hostName == "lebobo") ''
+        + ''
           TELEGRAM_BOT_TOKEN=${config.sops.placeholder.telegram-bot-token}
           TELEGRAM_ALLOWED_USERS=${config.sops.placeholder.telegram-allowed-users}
         '';
