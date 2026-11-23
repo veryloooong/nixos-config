@@ -264,7 +264,6 @@ in
     fuse-overlayfs
     podman-compose
     crun
-    vagrant
   ];
 
   # fonts
