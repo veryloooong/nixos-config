@@ -33,7 +33,7 @@ Add your API key to the encrypted file. sops encrypts the file when you save it.
 
 ```sh
 cd ~/nix
-nix shell nixpkgs#sops -c sops secrets/claude-code.yaml
+nix shell nixpkgs#sops -c sops secrets/secrets.yaml
 # In the editor:  deepseek-api-key: ***
 # Save and exit. Then rebuild to deploy:
 sudo nixos-rebuild switch
@@ -42,7 +42,7 @@ sudo nixos-rebuild switch
 ### View or edit secrets later
 
 ```sh
-cd ~/nix && nix shell nixpkgs#sops -c sops secrets/claude-code.yaml
+cd ~/nix && nix shell nixpkgs#sops -c sops secrets/secrets.yaml
 ```
 
 ### How it works
@@ -50,7 +50,7 @@ cd ~/nix && nix shell nixpkgs#sops -c sops secrets/claude-code.yaml
 | Component         | What                                              | Managed by                                                             |
 | ----------------- | ------------------------------------------------- | ---------------------------------------------------------------------- |
 | Age key           | `~/.config/sops/age/keys.txt`                     | Derived from `~/.ssh/id_ed25519` via `ssh-to-age`                      |
-| Encrypted file    | `secrets/claude-code.yaml`                        | Committed to Git. Holds `deepseek-api-key`                             |
+| Encrypted file    | `secrets/secrets.yaml`                            | Committed to Git. Holds `deepseek-api-key`                             |
 | System decryption | `configuration.nix` sops block                    | Extracts the key at build time. Writes `~/.config/claude-code/api-key` |
 | Shell env         | `modules/zsh.nix` initContent                     | Reads the file and exports `ANTHROPIC_AUTH_TOKEN`                      |
 | System env vars   | `configuration.nix` environment.variables         | `ANTHROPIC_BASE_URL`, model names, etc.                                |

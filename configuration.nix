@@ -517,7 +517,7 @@ in
   # See: https://michael.stapelberg.ch/posts/2025-08-24-secret-management-with-sops-nix/
   sops = {
     age.keyFile = "/home/veryloooong/.config/sops/age/keys.txt";
-    defaultSopsFile = ./secrets/claude-code.yaml;
+    defaultSopsFile = ./secrets/secrets.yaml;
 
     # Declare the secret so sops-nix knows which key to extract from the YAML file
     secrets."deepseek-api-key" = { };

@@ -26,5 +26,5 @@ creation_rules:
 #      age: >-
 #        EXISTING_KEY,
 #        NEW_KEY
-# 3. Re-encrypt for both: sops updatekeys secrets/claude-code.yaml
+# 3. Re-encrypt for both: sops updatekeys secrets/secrets.yaml
 # 4. Git commit, push, pull on the new machine
