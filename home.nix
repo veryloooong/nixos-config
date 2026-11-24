@@ -42,6 +42,7 @@
     # productivity
     anki
     vscode-runner
+    zed-editor-fhs
     kdePackages.kolourpaint
     xournalpp
     kdePackages.kdenlive
