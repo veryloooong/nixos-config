@@ -98,6 +98,13 @@
   # Zalo (upstream flake packaging, ZaDark variant)
   programs.zalo.enable = true;
 
+  # Hermes dashboard: fixed port (the gateway's own listener is ephemeral).
+  # Loopback only — a non-loopback host engages the dashboard auth gate.
+  services.hermes-agent.backend = {
+    mode = "dashboard";
+    port = 9119;
+  };
+
   # === DEVELOPMENT ===
 
   # Git and GitHub
