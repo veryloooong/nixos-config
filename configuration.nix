@@ -409,7 +409,7 @@ in
   networking.nftables.enable = true;
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 22 3389 49374 ];
+    allowedTCPPorts = [ 22 3389 49374 9119 ];
     allowedUDPPorts = [ 3389 49374 ];
     trustedInterfaces = [
       "Mihomo"
@@ -539,6 +539,8 @@ in
     secrets."github-token" = { };
     secrets."telegram-bot-token" = { };
     secrets."telegram-allowed-users" = { };
+    secrets."dashboard-auth-username" = { };
+    secrets."dashboard-auth-password" = { };
 
     # Template: write the decrypted API key into the user's home directory
     templates."deepseek-api-key" = {
@@ -567,6 +569,9 @@ in
     # environmentFiles into $HERMES_HOME/.env, and its gateway daemon runs
     # outside the interactive shell that exports DEEPSEEK_API_KEY.
     # Telegram credentials: single-host config, no conditional needed anymore.
+    # Dashboard basic-auth: the backend binds 0.0.0.0, so the auth gate is
+    # mandatory — these env entries provide it (hermes dashboard <user> writes
+    # the same fields into config.yaml; env shadows config).
     templates."hermes-env" = {
       content =
         "DEEPSEEK_API_KEY=${config.sops.placeholder.deepseek-api-key}\n"
@@ -575,6 +580,8 @@ in
         + ''
           TELEGRAM_BOT_TOKEN=${config.sops.placeholder.telegram-bot-token}
           TELEGRAM_ALLOWED_USERS=${config.sops.placeholder.telegram-allowed-users}
+          HERMES_DASHBOARD_BASIC_AUTH_USERNAME=${config.sops.placeholder.dashboard-auth-username}
+          HERMES_DASHBOARD_BASIC_AUTH_PW=${config.sops.placeholder.dashboard-auth-password}
         '';
       path = "/home/veryloooong/.config/hermes/env";
       owner = config.users.users.veryloooong.name;

@@ -98,9 +98,12 @@
   # Zalo (upstream flake packaging, ZaDark variant)
   programs.zalo.enable = true;
 
-  # Hermes dashboard: fixed port (the gateway's own listener is ephemeral).
-  # Loopback only — a non-loopback host engages the dashboard auth gate.
+  # Hermes dashboard: reachable on LAN + tailnet (host 0.0.0.0). Any
+  # non-loopback bind engages the dashboard auth gate — credentials come from
+  # the HERMES_DASHBOARD_BASIC_AUTH_* entries in the hermes-env template
+  # (values live in secrets/secrets.yaml).
   services.hermes-agent.backend = {
+    host = "0.0.0.0";
     mode = "dashboard";
     port = 9119;
   };
