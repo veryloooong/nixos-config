@@ -581,7 +581,7 @@ in
           TELEGRAM_BOT_TOKEN=${config.sops.placeholder.telegram-bot-token}
           TELEGRAM_ALLOWED_USERS=${config.sops.placeholder.telegram-allowed-users}
           HERMES_DASHBOARD_BASIC_AUTH_USERNAME=${config.sops.placeholder.dashboard-auth-username}
-          HERMES_DASHBOARD_BASIC_AUTH_PW=${config.sops.placeholder.dashboard-auth-password}
+          HERMES_DASHBOARD_BASIC_AUTH_PASSWORD=${config.sops.placeholder.dashboard-auth-password}
         '';
       path = "/home/veryloooong/.config/hermes/env";
       owner = config.users.users.veryloooong.name;
